@@ -5,8 +5,6 @@ import java.util.List;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.springframework.transaction.annotation.Transactional;
-
 import cn.edu.buaa.leochrist.dao.generic.GenericDao;
 import cn.edu.buaa.leochrist.model.generic.Page;
 import cn.edu.buaa.leochrist.model.generic.QueryItem;
@@ -59,6 +57,7 @@ public class GenericManagerImpl<T, PK extends Serializable> implements
 	/**
 	 * {@inheritDoc}
 	 */
+	@SuppressWarnings("unchecked")
 	public List<T> getAll(Class clazz, int firstResult, int maxResults,
 			String order) {
 		return genericDao.getAll(clazz, firstResult, maxResults, order);

@@ -266,6 +266,7 @@ public class Page<T> {
 		}
 		return multipage;
 	}
+	@SuppressWarnings("unchecked")
 	public static void main(String[] args) throws FileNotFoundException,
 			IOException {
 

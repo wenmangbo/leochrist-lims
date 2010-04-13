@@ -45,6 +45,7 @@ public interface GenericDao<T, PK extends Serializable> {
 	 * 
 	 * @return List of populated objects
 	 */
+	@SuppressWarnings("unchecked")
 	public List<T> getAll(Class clazz, int firstResult, int maxResults,
 			String order);
 
@@ -166,6 +167,7 @@ public interface GenericDao<T, PK extends Serializable> {
 	 * @param page
 	 * @return
 	 */
+	@SuppressWarnings("unchecked")
 	Page getNextPage(Page page);
 
 	/**

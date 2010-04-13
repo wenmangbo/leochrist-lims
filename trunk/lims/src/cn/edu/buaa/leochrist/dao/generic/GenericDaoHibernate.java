@@ -21,7 +21,6 @@ import org.apache.lucene.queryParser.ParseException;
 import org.apache.lucene.queryParser.QueryParser;
 import org.apache.lucene.search.BooleanClause;
 import org.apache.lucene.search.BooleanQuery;
-import org.apache.lucene.search.PrefixQuery;
 import org.apache.lucene.search.Query;
 import org.apache.lucene.search.RangeQuery;
 import org.apache.lucene.search.Sort;
@@ -73,7 +72,6 @@ public class GenericDaoHibernate<T, PK extends Serializable> extends
 	/**
 	 * {@inheritDoc}
 	 */
-	@SuppressWarnings("unchecked")
 	public List<T> getAll() {
 		return this.getAll(true);
 	}
@@ -119,7 +117,6 @@ public class GenericDaoHibernate<T, PK extends Serializable> extends
 	/**
 	 * {@inheritDoc}
 	 */
-	@SuppressWarnings("unchecked")
 	public T get(PK id) {
 		if (id != null) {
 			T entity = (T) this.get(id, true);
@@ -231,22 +228,11 @@ public class GenericDaoHibernate<T, PK extends Serializable> extends
 	/**
 	 * {@inheritDoc}
 	 */
-	@SuppressWarnings("unchecked")
 	public List<T> findByNamedQuery(String queryName) {
 		Map<String, Object> queryParams = new HashMap<String, Object>(0);
 
 		return this.findByNamedQuery(queryName, queryParams);
 
-	}
-
-	private String parseAliasName(String fieldName) {
-		int index = fieldName.lastIndexOf(".");
-		String alias = null;
-		if (index > 0) {
-			alias = fieldName.substring(0, index);
-		}
-
-		return alias;
 	}
 
 	/**
@@ -324,10 +310,6 @@ public class GenericDaoHibernate<T, PK extends Serializable> extends
 						bq.add(query, BooleanClause.Occur.MUST);
 					} else if (QueryType.START_WITH.equals(queryItem
 							.getQueryType())) {
-						org.apache.lucene.search.PrefixQuery pq = new PrefixQuery(
-								new Term(fieldName, keyword.toLowerCase()));
-						// bq.add(pq, BooleanClause.Occur.MUST);
-
 						bq.add(query, BooleanClause.Occur.MUST);
 
 					} else if (QueryType.CONTAINS.equals(queryItem
@@ -504,6 +486,7 @@ public class GenericDaoHibernate<T, PK extends Serializable> extends
 		return this.search(queryItems, page, true);
 	}
 
+	@SuppressWarnings("unchecked")
 	public Page<T> search(List<QueryItem> queryItems, Page<T> page,
 			boolean cacheable) {
 		String queryString = "select entity from  "
@@ -774,6 +757,7 @@ public class GenericDaoHibernate<T, PK extends Serializable> extends
 		return criteriaString;
 	}
 
+	@SuppressWarnings("unchecked")
 	public Page<T> search(QueryItem topQueryItem, Page<T> page) {
 
 		String queryString = "select entity from  "
@@ -836,6 +820,7 @@ public class GenericDaoHibernate<T, PK extends Serializable> extends
 
 	}
 
+	@SuppressWarnings("unchecked")
 	public Result<T> search(T example, int firstResult, int maxResults,
 			String... orders) {
 		Result<T> result = new Result<T>();

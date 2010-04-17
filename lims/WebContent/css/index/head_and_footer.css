@@ -1,0 +1,67 @@
+﻿div.struts_head {
+	height:120px;
+	background-color:#660000;
+}
+
+div.struts_head ul.nav {
+	height:30px;
+	line-height:30px;
+	background-color:#666666;
+	color:white;
+	font-weight:bold;
+	border-top:1px white solid;
+}
+
+ul.nav li {
+	float:left;
+	margin:0 20px;
+	text-align:center;
+}
+
+ul.nav li.registe_login {
+	float:right;
+	margin:0 20px;
+	text-align:center;
+}
+
+ul.nav li.registe_login a.light_green{
+	background:transparent url('../../img/index/light.gif') no-repeat scroll 0 5px;
+	float:right;
+	height:30px;
+	width:20px;
+}
+
+ul.nav li.registe_login a.light_red{
+	background:transparent url('../../img/index/light.gif') no-repeat scroll 0 -53px;
+	float:right;
+	height:30px;
+	width:20px;
+}
+
+ul.nav li.registe_login a.light_blue{
+	background:transparent url('../../img/index/light.gif') no-repeat scroll 0 -24px;
+	float:right;
+	height:30px;
+	width:20px;
+}
+
+
+
+div.struts_foot {
+	height:90px;
+	padding-left:90px;
+	color:white;
+	background-color:#660000;
+}
+
+div.struts_foot img {
+	float:left;
+	margin-right:10px;
+}
+div.struts_foot div {
+	padding-top:25px;
+}
+div.struts_foot div p {
+	font-size:14px;
+	line-height:22px;
+}

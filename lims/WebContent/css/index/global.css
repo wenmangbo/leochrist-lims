@@ -1,0 +1,341 @@
+﻿@import url('head_and_footer.css');
+/*============================================division============================================*/
+/*为背景定义了颜色*/
+html {
+	color:#000;
+	background:#FFF;
+}
+.pngfix {
+	behavior: expression(( this.runtimeStyle.behavior = "none") &&( this.pngSet ? this.pngSet = true :( this.nodeName == "IMG" && this.src.toLowerCase ( ) . indexOf('.png') > -1 ?( this.runtimeStyle.backgroundImage = "none", this.runtimeStyle.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + this.src + "', sizingMethod='image')", this.src = "transparent.gif" ) :( this.origBg = this.origBg ? this.origBg : this.currentStyle.backgroundImage.toString ( ) . replace('url("', '') . replace('")', ''), this.runtimeStyle.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + this.origBg + "', sizingMethod='crop')", this.runtimeStyle.backgroundImage = "none" ) ), this.pngSet = true ) );
+}
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td {
+	margin: 0;
+	padding: 0;
+}
+body {
+	width: 1000px;
+	margin: 0 auto;
+}
+/*合并边线,边线空间至零.*/
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+/*清除边线*/
+fieldset, img {
+	border: 0;
+}
+address, caption, cite, code, dfn, em, strong, th, var {
+	font-style: normal;
+	font-weight: normal;
+}
+li {
+	list-style: none;
+}
+caption, th {
+	text-align: left;
+}
+h1, h2, h3, h4, h5, h6 {
+	font-size: 100%;
+	font-weight: normal;
+}
+/*添加空字符清除融合*/
+q:before, q:after {
+	content: ”;
+}
+abbr, acronym {
+	border: 0;
+	font-variant: normal;
+}
+/* to preserve line-height and selector appearance */
+sup {
+	vertical-align: text-top;
+}
+sub {
+	vertical-align: text-bottom;
+}
+input, textarea, select {
+	font-family: inherit;
+	font-size: inherit;
+	font-weight: inherit;
+}
+/*to enable resizing for IE*/
+/*在ie下重定义*/
+input, textarea, select {
+	*font-size: 100%;
+}
+/*because legend doesn’t inherit in IE */
+/*IE下legend不继承 */
+legend {
+	color: #000;
+}
+/*============================================division============================================*/
+a {
+	color: white;
+	text-decoration: none;
+}
+a:hover {
+	color: #ea5506;
+}
+div.struct_body {
+	margin-bottom:10px;
+	font-size: 12px;
+	background-color: white;
+	width:1000px;
+}
+div.struct_body:after {
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+/*============================================division============================================*/
+button {
+	position: relative;
+	top: 2px; *;
+	top: 1px;
+	font-size: 12px;
+	height: 22px;
+	_height: 23px;
+	line-height: 20px;
+}
+button.button_50 {
+	width: 50px;
+}
+button.button_75 {
+	width: 75px;
+}
+button.button_100 {
+	width: 100px;
+}
+button.button_125 {
+	width: 125px;
+}
+button.button_150 {
+	width: 150px;
+}
+button.button_190 {
+	width: 190px;
+}
+input {
+	font-size: 12px;
+	height: 14px;
+	padding: 0px 0px 2px 7px;
+*	padding: 2px 0px 0px 7px;
+	_padding: 3px 0px 0px 7px;
+}
+input.input_50 {
+	width: 43px;
+}
+input.input_75 {
+	width: 68px;
+}
+input.input_100 {
+	width: 93px;
+}
+input.input_125 {
+	width: 118px;
+}
+input.input_150 {
+	width: 143px;
+}
+input.input_190 {
+	width: 183px;
+}
+select {
+	font-size: 12px;
+	height: 20px;
+}
+select.select_50 {
+	width: 50px;
+}
+select.select_75 {
+	width: 75px;
+}
+select.select_100 {
+	width: 100px;
+}
+select.select_125 {
+	width: 125px;
+}
+select.select_150 {
+	width: 150px;
+}
+select.select_190 {
+	width: 190px;
+}
+/*============================================division============================================*/
+img.border_normal {
+	border: 1px #d2d2d2 solid;
+}
+a img.border_normal {
+	display: block;
+}
+a:hover img.border_normal {
+	border: 1px black solid;
+}
+img.border_solid {
+	padding: 1px;
+	background-color: white;
+	border: 1px #d2d2d2 solid;
+}
+a img.border_solid {
+	display: block;
+}
+a:hover img.border_solid {
+	border: 1px black solid;
+}
+/*============================================division============================================*/
+div.icon_box {
+	padding: 1px;
+	border: 1px #d2d2d2 solid;
+	margin-bottom: 10px;
+}
+div.icon_box h2 {
+	height: 29px;
+	line-height: 29px;
+	padding-right: 6px;
+	background: transparent url('../../img/gzhome/global/bg.gif') repeat-x scroll 0 -143px;
+}
+div.icon_box h2 a.more {
+	float: right;
+	color: white;
+}
+div.icon_box h2 span.icon {
+	background: transparent url('../../img/gzhome/global/icon.gif') no-repeat scroll 0 0;
+	height: 29px;
+	line-height: 29px;
+	display: inline-block;
+	padding-left: 52px;
+	color: white;
+	font-weight: bold;
+}
+div.line_box {
+	padding: 1px;
+	border: 1px #d2d2d2 solid;
+	margin-bottom: 10px;
+}
+div.line_box h2 {
+	background: transparent url('../../img/gzhome/global/bg.gif') repeat-x scroll 0 -172px;
+	height: 30px;
+	line-height: 30px;
+	padding: 0 10px;
+}
+div.line_box h2 a.more {
+	float: right;
+}
+div.line_box h2 span.icon {
+	background: transparent url('../../img/gzhome/global/icon_2.gif') no-repeat scroll 0 -17px;
+	display: inline-block;
+	height: 26px;
+	line-height: 26px;
+	padding: 0 10px 0 12px;
+	font-weight: bold;
+	margin-top: 4px;
+}
+/*============================================division============================================*/
+div.g_popup {
+	background-color: white;
+	border-width: 3px;
+	border-style: solid;
+	padding: 10px;
+}
+div.g_popup img.exit {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	cursor: pointer;
+}
+div.g_popup iframe {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: -1;
+	filter: mask();
+	width: 100%;
+	height: 100%;
+	border: none;
+}
+span.show_style i {
+	border-width: 1px;
+	border-style: solid;
+	background-color: white;
+	text-align: center;
+	vertical-align: middle;
+	overflow: hidden;
+	display: table-cell; *;
+	display: block;
+	line-height: 100px;;
+}
+span.show_style i img {
+	vertical-align: middle;
+}
+/*============================================division============================================*/
+a.button_style1 {
+	background: transparent url('../../img/gzhome/global/button_1.gif') no-repeat scroll right top;
+	color: white;
+	display: block;
+	float: left;
+	margin-right: 10px;
+	font-weight: bold;
+	text-decoration: none;
+}
+a.button_style1 span {
+	background: transparent url('../../img/gzhome/global/button_1.gif') no-repeat scroll left top;
+	display: block;
+}
+a.font_12 {
+	background-position: right 0px;
+	font-size: 12px;
+	height: 24px;
+	padding-right: 12px;
+}
+a.font_12 span {
+	background-position: left 0px;
+	line-height: 12px;
+	padding: 6px 0px 6px 12px;
+}
+a.font_12:hover {
+	background-position: right -25px;
+	text-decoration: none;
+}
+a.font_12:hover span {
+	background-position: left -25px;
+}
+a.font_14 {
+	background-position: right -50px;
+	font-size: 14px;
+	height: 28px;
+	padding-right: 14px;
+}
+a.font_14 span {
+	background-position: left -50px;
+	line-height: 14px;
+	padding: 7px 0px 7px 14px;
+}
+a.font_14:hover {
+	background-position: right -79px;
+	text-decoration: none;
+}
+a.font_14:hover span {
+	background-position: left -79px;
+}
+a.font_16 {
+	background-position: right -108px;
+	font-size: 16px;
+	height: 32px;
+	padding-right: 16px;
+}
+a.font_16 span {
+	background-position: left -108px;
+	line-height: 16px;
+	padding: 8px 0px 8px 16px;
+}
+a.font_16:hover {
+	background-position: right -141px;
+	text-decoration: none;
+}
+a.font_16:hover span {
+	background-position: left -141px;
+}

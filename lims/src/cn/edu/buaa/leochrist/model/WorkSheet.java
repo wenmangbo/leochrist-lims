@@ -65,7 +65,7 @@ public class WorkSheet implements Serializable {
 	}
 
 	public void setCreator(Member creator) {
-		creator = creator;
+		this.creator = creator;
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)

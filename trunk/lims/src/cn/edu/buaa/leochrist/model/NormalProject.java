@@ -3,12 +3,23 @@ package cn.edu.buaa.leochrist.model;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.Table;
+
 @SuppressWarnings("serial")
+@Entity
+@Table(name = "normal_project")
+@PrimaryKeyJoinColumn(name = "id", referencedColumnName = "id")
 public class NormalProject extends Project implements Serializable {
 
-	private String name;
-
 	private Team team;
+
+	private String name;
 
 	private String information;
 
@@ -20,14 +31,8 @@ public class NormalProject extends Project implements Serializable {
 
 	private Date finishDate;
 
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "team_id")
 	public Team getTeam() {
 		return team;
 	}
@@ -36,6 +41,16 @@ public class NormalProject extends Project implements Serializable {
 		this.team = team;
 	}
 
+	@Column(name = "name", nullable = false)
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	@Column(name = "information")
 	public String getInformation() {
 		return information;
 	}
@@ -44,6 +59,7 @@ public class NormalProject extends Project implements Serializable {
 		this.information = information;
 	}
 
+	@Column(name = "budget", nullable = false)
 	public Double getBudget() {
 		return budget;
 	}
@@ -52,6 +68,7 @@ public class NormalProject extends Project implements Serializable {
 		this.budget = budget;
 	}
 
+	@Column(name = "create_date", nullable = false)
 	public Date getCreateDate() {
 		return createDate;
 	}
@@ -60,6 +77,7 @@ public class NormalProject extends Project implements Serializable {
 		this.createDate = createDate;
 	}
 
+	@Column(name = "last_modified_date", nullable = false)
 	public Date getLastModifiedDate() {
 		return lastModifiedDate;
 	}
@@ -68,6 +86,7 @@ public class NormalProject extends Project implements Serializable {
 		this.lastModifiedDate = lastModifiedDate;
 	}
 
+	@Column(name = "finish_date", nullable = false)
 	public Date getFinishDate() {
 		return finishDate;
 	}

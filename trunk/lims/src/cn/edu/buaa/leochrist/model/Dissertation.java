@@ -3,7 +3,19 @@ package cn.edu.buaa.leochrist.model;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
 @SuppressWarnings("serial")
+@Entity
+@Table(name = "dissertation")
 public class Dissertation implements Serializable {
 
 	private Integer id;
@@ -20,6 +32,9 @@ public class Dissertation implements Serializable {
 
 	private Date uploadDate;
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id", unique = true, nullable = false)
 	public Integer getId() {
 		return id;
 	}
@@ -28,6 +43,8 @@ public class Dissertation implements Serializable {
 		this.id = id;
 	}
 
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "uploader")
 	public Person getUploader() {
 		return uploader;
 	}
@@ -36,6 +53,7 @@ public class Dissertation implements Serializable {
 		this.uploader = uploader;
 	}
 
+	@Column(name = "title", nullable = false)
 	public String getTile() {
 		return tile;
 	}
@@ -44,6 +62,7 @@ public class Dissertation implements Serializable {
 		this.tile = tile;
 	}
 
+	@Column(name = "file", unique = true, nullable = false)
 	public String getFile() {
 		return file;
 	}
@@ -52,6 +71,7 @@ public class Dissertation implements Serializable {
 		this.file = file;
 	}
 
+	@Column(name = "author")
 	public String getAuthor() {
 		return author;
 	}
@@ -60,6 +80,7 @@ public class Dissertation implements Serializable {
 		this.author = author;
 	}
 
+	@Column(name = "pub_date")
 	public Date getPubDate() {
 		return pubDate;
 	}
@@ -68,6 +89,7 @@ public class Dissertation implements Serializable {
 		this.pubDate = pubDate;
 	}
 
+	@Column(name = "upload_date", nullable = false)
 	public Date getUploadDate() {
 		return uploadDate;
 	}

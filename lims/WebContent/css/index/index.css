@@ -1,0 +1,93 @@
+﻿div.struct_body div.login {
+	text-align:right;
+	margin:0 auto;
+	width:245px;
+	padding:2px;
+	background-color:#660000;
+	border:1px black solid;
+}
+
+div.login form{
+	background-color:#666666;
+	border:1px black solid;
+	color:white;
+	font-size:14px;
+	padding:30px;
+}
+div.login form input{
+	margin-left:5px;
+}
+
+div.login form p{
+	line-height:24px;
+}
+
+div.struct_body div.registe {
+	margin:0 auto;
+	width:500px;
+	padding:2px;
+	background-color:#660000;
+	border:1px black solid;
+}
+
+div.registe form{
+	background-color:#666666;
+	border:1px black solid;
+	color:white;
+	font-size:14px;
+	padding:15px 30px 30px;
+}
+
+div.registe form h2{
+	color:white;
+	font-size:28px;
+	font-weight:bold;
+}
+
+div.registe form p{
+	line-height:32px;
+}
+
+div.registe form p.button{
+	text-align:center;
+	margin-top:10px;
+}
+
+div.registe form label.lable_125{
+	display:inline-block;
+	width:125px;
+	text-align:right;
+	margin-right:10px;
+}
+
+div.registe form label.lable_100{
+	display:inline-block;
+	width:100px;
+	text-align:right;
+	margin-right:10px;
+}
+
+div.registe form label.lable_50{
+	display:inline-block;
+	width:50px;
+	text-align:right;
+	margin-right:10px;
+}
+
+div.registe form label.lable_25{
+	display:inline-block;
+	width:25px;
+	text-align:right;
+	margin-right:10px;
+}
+
+div.registe form strong{
+	display:inline-block;
+	width:25px;
+	text-align:right;
+	margin-right:10px;
+	color:red;
+}
+
+
+

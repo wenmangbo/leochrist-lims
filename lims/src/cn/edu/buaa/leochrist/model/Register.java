@@ -16,6 +16,8 @@ public class Register implements Serializable {
 
 	private Integer id;
 
+	private Person person;
+
 	private String username;
 
 	private String password;
@@ -31,6 +33,14 @@ public class Register implements Serializable {
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public Person getPerson() {
+		return person;
+	}
+
+	public void setPerson(Person person) {
+		this.person = person;
 	}
 
 	@Column(name = "username")

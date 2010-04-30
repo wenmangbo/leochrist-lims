@@ -1,6 +1,17 @@
 package cn.edu.buaa.leochrist.model;
 
 import java.io.Serializable;
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @SuppressWarnings("serial")
 public class Team implements Serializable {
@@ -11,6 +22,13 @@ public class Team implements Serializable {
 
 	private Project project;
 
+	private List<Member> members;
+
+	private List<Lab> labs;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id", unique = true, nullable = false)
 	public Integer getId() {
 		return id;
 	}
@@ -19,6 +37,8 @@ public class Team implements Serializable {
 		this.id = id;
 	}
 
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "team_leader_id")
 	public Member getTeamLeader() {
 		return teamLeader;
 	}
@@ -27,12 +47,32 @@ public class Team implements Serializable {
 		this.teamLeader = teamLeader;
 	}
 
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "project_id")
 	public Project getProject() {
 		return project;
 	}
 
 	public void setProject(Project project) {
 		this.project = project;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "team")
+	public List<Member> getMembers() {
+		return members;
+	}
+
+	public void setMembers(List<Member> members) {
+		this.members = members;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "team")
+	public List<Lab> getLabs() {
+		return labs;
+	}
+
+	public void setLabs(List<Lab> labs) {
+		this.labs = labs;
 	}
 
 }

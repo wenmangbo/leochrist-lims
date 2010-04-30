@@ -3,10 +3,20 @@ package cn.edu.buaa.leochrist.model;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
 @SuppressWarnings("serial")
 public class WorkStatus implements Serializable {
 
 	private Integer id;
+
+	private WorkSheet workSheet;
 
 	private Integer status;
 
@@ -16,6 +26,9 @@ public class WorkStatus implements Serializable {
 
 	private Date lastModifiedDate;
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id", unique = true, nullable = false)
 	public Integer getId() {
 		return id;
 	}
@@ -24,6 +37,17 @@ public class WorkStatus implements Serializable {
 		this.id = id;
 	}
 
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "work_sheet_id")
+	public WorkSheet getWorkSheet() {
+		return workSheet;
+	}
+
+	public void setWorkSheet(WorkSheet workSheet) {
+		this.workSheet = workSheet;
+	}
+
+	@Column(name = "status")
 	public Integer getStatus() {
 		return status;
 	}
@@ -32,6 +56,7 @@ public class WorkStatus implements Serializable {
 		this.status = status;
 	}
 
+	@Column(name = "report")
 	public String getReport() {
 		return report;
 	}
@@ -40,6 +65,7 @@ public class WorkStatus implements Serializable {
 		this.report = report;
 	}
 
+	@Column(name = "create_date", nullable = false)
 	public Date getCreateDate() {
 		return createDate;
 	}
@@ -48,6 +74,7 @@ public class WorkStatus implements Serializable {
 		this.createDate = createDate;
 	}
 
+	@Column(name = "last_modified_date", nullable = false)
 	public Date getLastModifiedDate() {
 		return lastModifiedDate;
 	}

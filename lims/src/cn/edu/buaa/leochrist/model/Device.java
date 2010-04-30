@@ -3,14 +3,25 @@ package cn.edu.buaa.leochrist.model;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
 @SuppressWarnings("serial")
+@Entity
+@Table(name = "device")
 public class Device implements Serializable {
 
 	private Integer id;
 
 	private Lab lab;
-
-	private Team team;
 
 	private Person user;
 
@@ -22,6 +33,9 @@ public class Device implements Serializable {
 
 	private Date stockDate;
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id", unique = true, nullable = false)
 	public Integer getId() {
 		return id;
 	}
@@ -30,6 +44,8 @@ public class Device implements Serializable {
 		this.id = id;
 	}
 
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "lab_id")
 	public Lab getLab() {
 		return lab;
 	}
@@ -38,14 +54,8 @@ public class Device implements Serializable {
 		this.lab = lab;
 	}
 
-	public Team getTeam() {
-		return team;
-	}
-
-	public void setTeam(Team team) {
-		this.team = team;
-	}
-
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "person_id")
 	public Person getUser() {
 		return user;
 	}
@@ -54,6 +64,7 @@ public class Device implements Serializable {
 		this.user = user;
 	}
 
+	@Column(name = "name", nullable = false)
 	public String getName() {
 		return name;
 	}
@@ -62,6 +73,7 @@ public class Device implements Serializable {
 		this.name = name;
 	}
 
+	@Column(name = "price", nullable = false)
 	public Double getPrice() {
 		return price;
 	}
@@ -70,6 +82,7 @@ public class Device implements Serializable {
 		this.price = price;
 	}
 
+	@Column(name = "is_available")
 	public Boolean getIsAvailable() {
 		return isAvailable;
 	}
@@ -78,6 +91,7 @@ public class Device implements Serializable {
 		this.isAvailable = isAvailable;
 	}
 
+	@Column(name = "stock_date", nullable = false)
 	public Date getStockDate() {
 		return stockDate;
 	}

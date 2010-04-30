@@ -4,8 +4,75 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd"
 	default-lazy-init="true">
 
+	<bean id="classifiedProjectDao"
+		class="cn.edu.buaa.leochrist.dao.hibernate.ClassifiedProjectDaoHibernate">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="competenceDao"
+		class="cn.edu.buaa.leochrist.dao.hibernate.CompetenceDaoHibernate">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="degreeDao" class="cn.edu.buaa.leochrist.dao.hibernate.DegreeDaoHibernate">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="deviceDao" class="cn.edu.buaa.leochrist.dao.hibernate.DeviceDaoHibernate">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="dissertationDao"
+		class="cn.edu.buaa.leochrist.dao.hibernate.DissertationDaoHibernate">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="labDao" class="cn.edu.buaa.leochrist.dao.hibernate.LabDaoHibernate">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="memberDao" class="cn.edu.buaa.leochrist.dao.hibernate.MemberDaoHibernate">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="normalProjectDao"
+		class="cn.edu.buaa.leochrist.dao.hibernate.NormalProjectDaoHibernate">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="personDao" class="cn.edu.buaa.leochrist.dao.hibernate.PersonDaoHibernate">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="projectDao" class="cn.edu.buaa.leochrist.dao.hibernate.ProjectDaoHibernate">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
 	<bean id="registerDao"
 		class="cn.edu.buaa.leochrist.dao.hibernate.RegisterDaoHibernate">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="roleDao" class="cn.edu.buaa.leochrist.dao.hibernate.RoleDaoHibernate">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="storemanDao"
+		class="cn.edu.buaa.leochrist.dao.hibernate.StoremanDaoHibernate">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="teamDao" class="cn.edu.buaa.leochrist.dao.hibernate.TeamDaoHibernate">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="workSheetDao"
+		class="cn.edu.buaa.leochrist.dao.hibernate.WorkSheetDaoHibernate">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="workStatusDao"
+		class="cn.edu.buaa.leochrist.dao.hibernate.WorkStatusDaoHibernate">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 

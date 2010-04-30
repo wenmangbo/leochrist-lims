@@ -3,6 +3,21 @@
 	"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
 	<session-factory>
-		<mapping class="cn.edu.buaa.leochrist.model.Register"/>
+		<mapping class="cn.edu.buaa.leochrist.model.ClassifiedProject" />
+		<mapping class="cn.edu.buaa.leochrist.model.Competence" />
+		<mapping class="cn.edu.buaa.leochrist.model.Degree" />
+		<mapping class="cn.edu.buaa.leochrist.model.Device" />
+		<mapping class="cn.edu.buaa.leochrist.model.Dissertation" />
+		<mapping class="cn.edu.buaa.leochrist.model.Lab" />
+		<mapping class="cn.edu.buaa.leochrist.model.Member" />
+		<mapping class="cn.edu.buaa.leochrist.model.NormalProject" />
+		<mapping class="cn.edu.buaa.leochrist.model.Person" />
+		<mapping class="cn.edu.buaa.leochrist.model.Project" />
+		<mapping class="cn.edu.buaa.leochrist.model.Register" />
+		<mapping class="cn.edu.buaa.leochrist.model.Role" />
+		<mapping class="cn.edu.buaa.leochrist.model.Storeman" />
+		<mapping class="cn.edu.buaa.leochrist.model.Team" />
+		<mapping class="cn.edu.buaa.leochrist.model.WorkSheet" />
+		<mapping class="cn.edu.buaa.leochrist.model.WorkStatus" />
 	</session-factory>
 </hibernate-configuration>

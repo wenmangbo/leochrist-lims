@@ -1,6 +1,7 @@
 ﻿div.struts_head {
 	height:120px;
 	background-color:#660000;
+	margin-bottom:10px;
 }
 
 div.struts_head ul.nav {
@@ -29,6 +30,7 @@ ul.nav li.registe_login a.light_green{
 	float:right;
 	height:30px;
 	width:20px;
+	margin-left:10px;
 }
 
 ul.nav li.registe_login a.light_red{
@@ -36,6 +38,7 @@ ul.nav li.registe_login a.light_red{
 	float:right;
 	height:30px;
 	width:20px;
+	margin-left:10px;
 }
 
 ul.nav li.registe_login a.light_blue{
@@ -43,6 +46,7 @@ ul.nav li.registe_login a.light_blue{
 	float:right;
 	height:30px;
 	width:20px;
+	margin-left:10px;
 }
 
 

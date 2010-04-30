@@ -7,8 +7,73 @@
             http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd"
 	default-lazy-init="true">
 
+	<bean id="classifiedProjectManager"
+		class="cn.edu.buaa.leochrist.service.impl.ClassifiedProjectManagerImpl">
+		<constructor-arg ref="classifiedProjectDao" />
+	</bean>
+
+	<bean id="competenceManager"
+		class="cn.edu.buaa.leochrist.service.impl.CompetenceManagerImpl">
+		<constructor-arg ref="competenceDao" />
+	</bean>
+
+	<bean id="degreeManager" class="cn.edu.buaa.leochrist.service.impl.DegreeManagerImpl">
+		<constructor-arg ref="degreeDao" />
+	</bean>
+
+	<bean id="deviceManager" class="cn.edu.buaa.leochrist.service.impl.DeviceManagerImpl">
+		<constructor-arg ref="deviceDao" />
+	</bean>
+
+	<bean id="dissertationManager"
+		class="cn.edu.buaa.leochrist.service.impl.DissertationManagerImpl">
+		<constructor-arg ref="dissertationDao" />
+	</bean>
+
+	<bean id="labManager" class="cn.edu.buaa.leochrist.service.impl.LabManagerImpl">
+		<constructor-arg ref="labDao" />
+	</bean>
+
+	<bean id="memberManager" class="cn.edu.buaa.leochrist.service.impl.MemberManagerImpl">
+		<constructor-arg ref="memberDao" />
+	</bean>
+
+	<bean id="normalProjectManager"
+		class="cn.edu.buaa.leochrist.service.impl.NormalProjectManagerImpl">
+		<constructor-arg ref="normalProjectDao" />
+	</bean>
+
+	<bean id="personManager" class="cn.edu.buaa.leochrist.service.impl.PersonManagerImpl">
+		<constructor-arg ref="personDao" />
+	</bean>
+
+	<bean id="projectManager" class="cn.edu.buaa.leochrist.service.impl.ProjectManagerImpl">
+		<constructor-arg ref="projectDao" />
+	</bean>
+
 	<bean id="registerManager" class="cn.edu.buaa.leochrist.service.impl.RegisterManagerImpl">
 		<constructor-arg ref="registerDao" />
 	</bean>
-	
+
+	<bean id="roleManager" class="cn.edu.buaa.leochrist.service.impl.RoleManagerImpl">
+		<constructor-arg ref="roleDao" />
+	</bean>
+
+	<bean id="storemanManager" class="cn.edu.buaa.leochrist.service.impl.StoremanManagerImpl">
+		<constructor-arg ref="storemanDao" />
+	</bean>
+
+	<bean id="teamManager" class="cn.edu.buaa.leochrist.service.impl.TeamManagerImpl">
+		<constructor-arg ref="teamDao" />
+	</bean>
+
+	<bean id="workSheetManager" class="cn.edu.buaa.leochrist.service.impl.WorkSheetManagerImpl">
+		<constructor-arg ref="workSheetDao" />
+	</bean>
+
+	<bean id="workStatusManager"
+		class="cn.edu.buaa.leochrist.service.impl.WorkStatusManagerImpl">
+		<constructor-arg ref="workStatusDao" />
+	</bean>
+
 </beans>

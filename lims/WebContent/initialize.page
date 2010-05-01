@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<link href="css/index/global.css" type="text/css" rel="stylesheet" />
+<link href="css/index/index.css" type="text/css" rel="stylesheet" />
+<title>LeoChrist-LIMS</title>
+</head>
+<body>
+	#parse("/WEB-INF/common/head.vm")
+	<div class="struct_body">
+		<div class="initialize">
+			<form action="#">
+				<h2>系统初始管理员创建表：</h2>
+				<p><label class="lable_125">管理员登录名:</label><input class="input_125" type="text"/><strong>*</strong></p>
+				<p><label class="lable_125">设定密码:</label><input class="input_125" type="password"/><strong>*</strong></p>
+				<p><label class="lable_125">再次输入密码:</label><input class="input_125" type="password"/><strong>*</strong></p>
+				<p><label class="lable_125">身份证号码:</label><input class="input_190" type="text"/><strong>*</strong></p>
+				<p class="button"><button class="button_100" type="reset">重新填写</button><button class="button_100" type="submit">注册提交</button></p>
+			</form>
+		</div>
+	</div>
+	#parse("/WEB-INF/common/foot.vm")
+</body>
+</html>

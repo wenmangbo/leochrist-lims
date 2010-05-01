@@ -1,4 +1,4 @@
-﻿div.struct_body div.login {
+div.struct_body div.login {
 	text-align:right;
 	margin:0 auto;
 	width:245px;
@@ -89,5 +89,49 @@ div.registe form strong{
 	color:red;
 }
 
+div.struct_body div.initialize {
+	margin:0 auto;
+	width:500px;
+	padding:2px;
+	background-color:#660000;
+	border:1px black solid;
+}
 
+div.initialize form{
+	background-color:#666666;
+	border:1px black solid;
+	color:white;
+	font-size:14px;
+	padding:15px 30px 30px;
+}
+
+div.initialize form h2{
+	color:white;
+	font-size:32px;
+	font-weight:bold;
+}
+
+div.initialize form p{
+	line-height:32px;
+}
+
+div.initialize form p.button{
+	text-align:center;
+	margin-top:10px;
+}
+
+div.initialize form label.lable_125{
+	display:inline-block;
+	width:125px;
+	text-align:right;
+	margin-right:10px;
+}
+
+div.initialize form strong{
+	display:inline-block;
+	width:25px;
+	text-align:right;
+	margin-right:10px;
+	color:red;
+}
 

@@ -4,22 +4,36 @@
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
 <link href="css/index/global.css" type="text/css" rel="stylesheet" />
 <link href="css/index/index.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript" src="javascript/jquery-1.4.2.min.js"></script>
 <title>LeoChrist-LIMS</title>
 </head>
 <body>
-	#parse("/WEB-INF/common/head.vm")
 	<div class="struct_body">
 		<div class="initialize">
-			<form action="#">
-				<h2>系统初始管理员创建表：</h2>
-				<p><label class="lable_125">管理员登录名:</label><input class="input_125" type="text"/><strong>*</strong></p>
-				<p><label class="lable_125">设定密码:</label><input class="input_125" type="password"/><strong>*</strong></p>
+			<form action="/lims/initialize.action" method="get">
+				<h2>系统初始创建表：</h2>
+				<h3>添加管理员ADMIN:</h3>
+				<p><label class="lable_125">管理员登录名:</label><input name="register.username" class="input_125" type="text"/><strong>*</strong></p>
+				<p><label class="lable_125">设定密码:</label><input name="register.password" class="input_125" type="password"/><strong>*</strong></p>
 				<p><label class="lable_125">再次输入密码:</label><input class="input_125" type="password"/><strong>*</strong></p>
-				<p><label class="lable_125">身份证号码:</label><input class="input_190" type="text"/><strong>*</strong></p>
+				<p><label class="lable_125">身份证号码:</label><input name="person.dCard" class="input_190" type="text"/><strong>*</strong></p>
+				<h3 id="role">添加角色ROLE：<button class="button_100" type="button" onclick="addNewRole();">添加新的角色</button></h3>
+				<p><label class="lable_125">角色名称:</label><input name="roles.roleName" class="input_125" type="text"/><strong>*</strong></p>
+				<p><label class="lable_125">角色描述:</label><textarea name="roles.description"></textarea></p>
+				<h3 id="degree">添加学历Degree：<button class="button_100" type="button" onclick="addNewDegree();">添加新的学历</button></h3>
+				<p><label class="lable_125">学历名称:</label><input name="degrees.degreeName" class="input_125" type="text"/><strong>*</strong></p>
+				<p><label class="lable_125">学历描述:</label><textarea name="degrees.description"></textarea></p>
 				<p class="button"><button class="button_100" type="reset">重新填写</button><button class="button_100" type="submit">注册提交</button></p>
 			</form>
 		</div>
 	</div>
-	#parse("/WEB-INF/common/foot.vm")
+	<script type="text/javascript">
+	function addNewRole() {
+		jQuery("#role").after('<p><label class="lable_125">角色名称:</label><input name="roles.roleName" class="input_125" type="text"/><strong>*</strong></p><p><label class="lable_125">角色描述:</label><textarea name="roles.description"></textarea></p>');
+	}
+	function addNewDegree() {
+		jQuery("#degree").after('<p><label class="lable_125">学历名称:</label><input name="degrees.degreeName" class="input_125" type="text"/><strong>*</strong></p><p><label class="lable_125">学历描述:</label><textarea name="degrees.description"></textarea></p>');
+	}
+    </script>
 </body>
 </html>

@@ -62,7 +62,7 @@ public class Person implements Serializable {
 		this.id = id;
 	}
 
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "register_id")
 	public Register getRegister() {
 		return register;
@@ -99,7 +99,7 @@ public class Person implements Serializable {
 		this.introduction = introduction;
 	}
 
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "degree_id")
 	public Degree getDegree() {
 		return degree;
@@ -110,7 +110,7 @@ public class Person implements Serializable {
 	}
 
 	@ManyToOne(fetch = FetchType.EAGER)  
-	@JoinColumn(name = "role_id", nullable = false,  updatable = false)  
+	@JoinColumn(name = "role_id")  
 	public Role getRole() {
 		return role;
 	}

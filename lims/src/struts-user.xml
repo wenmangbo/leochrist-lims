@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="user" extends="default" namespace="/">
+		<action name="index" class="cn.edu.buaa.leochrist.actions.UserAction"
+			method="index">
+			<result type="velocity" name="success">index.page</result>
+			<result name="error">error.jsp</result>
+		</action>
+		
+		<action name="registe" class="cn.edu.buaa.leochrist.actions.UserAction"
+			method="registe">
+			<result type="velocity" name="success">registe.page</result>
+			<result name="error">error.jsp</result>
+		</action>
+		
+		<action name="registeSave" class="cn.edu.buaa.leochrist.actions.UserAction"
+			method="registeSave">
+			<result name="success" type="redirect-action">
+				<param name="actionName">index</param>
+				<param name="namespace">/</param>
+			</result>
+			<result name="error">error.jsp</result>
+		</action>
+		
+		<action name="login" class="cn.edu.buaa.leochrist.actions.UserAction"
+			method="login">
+			<result name="success" type="redirect-action">
+				<param name="actionName">index</param>
+				<param name="namespace">/</param>
+			</result>
+			<result name="error">login.page</result>
+		</action>
+		
+		<action name="logout" class="cn.edu.buaa.leochrist.actions.UserAction"
+			method="logout">
+			<result name="success" type="redirect-action">
+				<param name="actionName">index</param>
+				<param name="namespace">/</param>
+			</result>
+		</action>
+
+		
+	</package>
+</struts>

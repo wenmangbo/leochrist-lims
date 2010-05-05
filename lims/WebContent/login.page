@@ -9,12 +9,15 @@
 <body>
 	#parse("/WEB-INF/common/head.vm")
 	<div class="struct_body">
+		#if($message)
+			<h2>$message</h2>
+		#end
 		<div class="login">
-			<form action="#">
-				<p><label>用户名:</label><input class="input_125" type="text"/></p>
-				<p><label>密码:</label><input class="input_125" type="password"/></p>
+			<form action="/lims/login.action" method="post">
+				<p><label>用户名:</label><input name="register.username" class="input_125" type="text"/></p>
+				<p><label>密码:</label><input name="register.password" class="input_125" type="password"/></p>
 				<p><label>验证码:</label><label>123</label><input class="input_50" type="text"/></p>
-				<p><button class="button_100" type="submit">登录</button></p>
+				<p><a href="/lims/registe.action">注册</a><button class="button_100" type="submit">登录</button></p>
 			</form>
 		</div>
 	</div>

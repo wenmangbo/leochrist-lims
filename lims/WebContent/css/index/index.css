@@ -91,7 +91,7 @@ div.registe form strong{
 
 div.struct_body div.initialize {
 	margin:0 auto;
-	width:500px;
+	width:520px;
 	padding:2px;
 	background-color:#660000;
 	border:1px black solid;
@@ -109,6 +109,16 @@ div.initialize form h2{
 	color:white;
 	font-size:32px;
 	font-weight:bold;
+}
+
+div.initialize form h3{
+	color:white;
+	font-size:14px;
+	font-weight:bold;
+}
+
+div.initialize form h3 button{
+	float:right;
 }
 
 div.initialize form p{

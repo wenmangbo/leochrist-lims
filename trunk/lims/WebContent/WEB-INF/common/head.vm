@@ -1,1 +1,9 @@
-<div class="struts_head"><img src="img/index/logo.gif" alt="logo"/><img src="img/index/headPic.gif" alt="pic" style="float:right"/><ul class="nav"><li><a href="#">实验室简介</a></li><li><a href="#">最新科研成果</a></li><li><a href="#">信息查询</a></li><li class="registe_login"><a href="/lims/login.page">注册/登录</a><a class="light_blue" href="#"></a></li></ul></div>
+<div class="struts_head"><img src="img/index/logo.gif" alt="logo"/><img src="img/index/headPic.gif" alt="pic" style="float:right"/><ul class="nav"><li><a href="#">实验室简介</a></li><li><a href="#">最新科研成果</a></li><li><a href="#">信息查询</a></li><li class="registe_login">
+#if(${role.roleName} == "admin")
+	<a href="/lims/login.page">${role.roleName}</a><a href="/lims/logout.action">退出</a>
+#elseif(${person})
+	<a href="/lims/login.page">$!{person.name}</a><a href="/lims/logout.action">退出</a>
+#else
+	<a href="/lims/login.page">登录/注册</a>
+#end
+<a class="light_blue" href="#"></a></li></ul></div>

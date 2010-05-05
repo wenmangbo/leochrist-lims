@@ -22,7 +22,7 @@ public class Role implements Serializable {
 
 	private String roleName;
 
-	private String descirption;
+	private String description;
 
 	private List<Competence> competences;
 
@@ -47,12 +47,12 @@ public class Role implements Serializable {
 	}
 
 	@Column(name = "description")
-	public String getDescirption() {
-		return descirption;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setDescirption(String descirption) {
-		this.descirption = descirption;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "role")

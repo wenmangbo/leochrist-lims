@@ -38,7 +38,7 @@ public class Register implements Serializable {
 		this.id = id;
 	}
 
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "person_id")
 	public Person getPerson() {
 		return person;

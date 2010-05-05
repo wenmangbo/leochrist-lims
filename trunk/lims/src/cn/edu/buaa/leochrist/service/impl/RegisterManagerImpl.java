@@ -15,4 +15,12 @@ public class RegisterManagerImpl extends GenericManagerImpl<Register, Integer>
 		this.registerDao = registerDao;
 	}
 
+	public boolean isExist(String username) {
+
+		return registerDao.isExist(username);
+	}
+
+	public Register findByUsername(String username) {
+		return registerDao.findByUsername(username);
+	}
 }

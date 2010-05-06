@@ -3,13 +3,23 @@
     "http://struts.apache.org/dtds/struts-2.0.dtd">
 
 <struts>
-	<package name="admin" extends="default" namespace="/">
+	<package name="admin" extends="default" namespace="/admin">
 		<action name="initialize" class="cn.edu.buaa.leochrist.actions.InitializeAction"
 			method="initialize">
 			<result name="success" type="redirect-action">
 				<param name="actionName">index</param>
 				<param name="namespace">/</param>
 			</result>
+		</action>
+		
+		<action name="adminView" class="cn.edu.buaa.leochrist.actions.AdminAction"
+			method="adminView">
+			<result type="velocity" name="success">/WEB-INF/pages/admin/adminView.page</result>
+		</action>
+		
+		<action name="adminRegisterInfo" class="cn.edu.buaa.leochrist.actions.AdminAction"
+			method="adminRegisterInfo">
+			<result type="velocity" name="success">/WEB-INF/pages/admin/adminRegisterInfo.page</result>
 		</action>
 	</package>
 </struts>

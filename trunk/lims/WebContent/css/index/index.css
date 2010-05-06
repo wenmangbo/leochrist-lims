@@ -1,147 +1,191 @@
 div.struct_body div.login {
-	text-align:right;
-	margin:0 auto;
-	width:245px;
-	padding:2px;
-	background-color:#660000;
-	border:1px black solid;
+	text-align: right;
+	margin: 0 auto;
+	width: 245px;
+	padding: 2px;
+	background-color: #660000;
+	border: 1px black solid;
 }
 
-div.login form{
-	background-color:#666666;
-	border:1px black solid;
-	color:white;
-	font-size:14px;
-	padding:30px;
-}
-div.login form input{
-	margin-left:5px;
+div.login form {
+	background-color: #666666;
+	border: 1px black solid;
+	color: white;
+	font-size: 14px;
+	padding: 30px;
 }
 
-div.login form p{
-	line-height:24px;
+div.login form input {
+	margin-left: 5px;
+}
+
+div.login form p {
+	line-height: 24px;
 }
 
 div.struct_body div.registe {
-	margin:0 auto;
-	width:500px;
-	padding:2px;
-	background-color:#660000;
-	border:1px black solid;
+	margin: 0 auto;
+	width: 500px;
+	padding: 2px;
+	background-color: #660000;
+	border: 1px black solid;
 }
 
-div.registe form{
-	background-color:#666666;
-	border:1px black solid;
-	color:white;
-	font-size:14px;
-	padding:15px 30px 30px;
+div.registe form {
+	background-color: #666666;
+	border: 1px black solid;
+	color: white;
+	font-size: 14px;
+	padding: 15px 30px 30px;
 }
 
-div.registe form h2{
-	color:white;
-	font-size:28px;
-	font-weight:bold;
+div.registe form h2 {
+	color: white;
+	font-size: 28px;
+	font-weight: bold;
 }
 
-div.registe form p{
-	line-height:32px;
+div.registe form p {
+	line-height: 32px;
 }
 
-div.registe form p.button{
-	text-align:center;
-	margin-top:10px;
+div.registe form p.button {
+	text-align: center;
+	margin-top: 10px;
 }
 
-div.registe form label.lable_125{
-	display:inline-block;
-	width:125px;
-	text-align:right;
-	margin-right:10px;
+div.registe form label.lable_125 {
+	display: inline-block;
+	width: 125px;
+	text-align: right;
+	margin-right: 10px;
 }
 
-div.registe form label.lable_100{
-	display:inline-block;
-	width:100px;
-	text-align:right;
-	margin-right:10px;
+div.registe form label.lable_100 {
+	display: inline-block;
+	width: 100px;
+	text-align: right;
+	margin-right: 10px;
 }
 
-div.registe form label.lable_50{
-	display:inline-block;
-	width:50px;
-	text-align:right;
-	margin-right:10px;
+div.registe form label.lable_50 {
+	display: inline-block;
+	width: 50px;
+	text-align: right;
+	margin-right: 10px;
 }
 
-div.registe form label.lable_25{
-	display:inline-block;
-	width:25px;
-	text-align:right;
-	margin-right:10px;
+div.registe form label.lable_25 {
+	display: inline-block;
+	width: 25px;
+	text-align: right;
+	margin-right: 10px;
 }
 
-div.registe form strong{
-	display:inline-block;
-	width:25px;
-	text-align:right;
-	margin-right:10px;
-	color:red;
+div.registe form strong {
+	display: inline-block;
+	width: 25px;
+	text-align: right;
+	margin-right: 10px;
+	color: red;
 }
 
 div.struct_body div.initialize {
-	margin:0 auto;
-	width:520px;
-	padding:2px;
-	background-color:#660000;
-	border:1px black solid;
+	margin: 0 auto;
+	width: 520px;
+	padding: 2px;
+	background-color: #660000;
+	border: 1px black solid;
 }
 
-div.initialize form{
-	background-color:#666666;
-	border:1px black solid;
-	color:white;
-	font-size:14px;
-	padding:15px 30px 30px;
+div.initialize form {
+	background-color: #666666;
+	border: 1px black solid;
+	color: white;
+	font-size: 14px;
+	padding: 15px 30px 30px;
 }
 
-div.initialize form h2{
-	color:white;
-	font-size:32px;
-	font-weight:bold;
+div.initialize form h2 {
+	color: white;
+	font-size: 32px;
+	font-weight: bold;
 }
 
-div.initialize form h3{
-	color:white;
-	font-size:14px;
-	font-weight:bold;
+div.initialize form h3 {
+	color: white;
+	font-size: 14px;
+	font-weight: bold;
 }
 
-div.initialize form h3 button{
-	float:right;
+div.initialize form h3 button {
+	float: right;
 }
 
-div.initialize form p{
-	line-height:32px;
+div.initialize form p {
+	line-height: 32px;
 }
 
-div.initialize form p.button{
-	text-align:center;
-	margin-top:10px;
+div.initialize form p.button {
+	text-align: center;
+	margin-top: 10px;
 }
 
-div.initialize form label.lable_125{
-	display:inline-block;
-	width:125px;
-	text-align:right;
-	margin-right:10px;
+div.initialize form label.lable_125 {
+	display: inline-block;
+	width: 125px;
+	text-align: right;
+	margin-right: 10px;
 }
 
-div.initialize form strong{
-	display:inline-block;
-	width:25px;
-	text-align:right;
-	margin-right:10px;
-	color:red;
+div.initialize form strong {
+	display: inline-block;
+	width: 25px;
+	text-align: right;
+	margin-right: 10px;
+	color: red;
 }
 
+div.struct_body div.admin_nav {
+	width: 220px;
+	padding: 2px;
+	background-color: #660000;
+	border: 1px black solid;
+}
+
+div.admin_nav ul {
+	color: white;
+	background-color: #666666;
+	border: 1px black solid;
+}
+
+div.admin_nav ul li {
+	font-size: 14px;
+	font-weight: bold;
+	padding-left: 20px;
+	line-height: 26px;
+}
+
+div.struct_body div.register_info {
+	float: right;
+	width: 758px;
+	padding: 2px;
+	background-color: #660000;
+	border: 1px black solid;
+}
+
+div.register_info table {
+	width: 100%;
+	color: white;
+	background-color: #666666;
+	border: 1px black solid;
+}
+
+div.register_info table tr {
+	line-height: 30px;
+}
+
+div.register_info table tr td,th {
+	padding: 0 0 0 10px;
+	border: 1px black solid;
+}

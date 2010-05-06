@@ -1,20 +1,21 @@
 ﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-#set($tmplpath="")
+#set($tmplpath="../")
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
 <link href="${tmplpath}css/index/global.css" type="text/css" rel="stylesheet" />
 <link href="${tmplpath}css/index/index.css" type="text/css" rel="stylesheet" />
 <title>LeoChrist-LIMS</title>
 </head>
 <body>
-	#parse("/WEB-INF/common/head.vm")
-	<div class="struct_body" style="height:380px;margin-top:10px;">
-		<div style="float:right; background-color:blue; height:380px; width:590px;">
-			<h2 style="font-size:30px; color:white;">新闻</h2>
-		</div>
-		<div style="background-color:blue; height:380px; width:400px;">
-			<h2 style="font-size:30px; color:white;">实验室宣传</h2>
+	#parse("WEB-INF/common/head.vm")
+	<div class="struct_body">
+		<div class="admin_nav">	
+			<ul>
+				<li><a href="/lims/admin/adminRegisterInfo.action">用户注册信息</a></li>
+				<li>用户注册信息</li>
+				<li>用户注册信息</li>
+			</ul>
 		</div>
 	</div>
 	#parse("/WEB-INF/common/foot.vm")

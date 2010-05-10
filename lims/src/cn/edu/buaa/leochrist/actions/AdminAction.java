@@ -14,6 +14,7 @@ import cn.edu.buaa.leochrist.model.Register;
 import cn.edu.buaa.leochrist.model.Role;
 import cn.edu.buaa.leochrist.model.generic.QueryItem;
 import cn.edu.buaa.leochrist.model.generic.QueryItem.QueryType;
+import cn.edu.buaa.leochrist.service.PersonManager;
 import cn.edu.buaa.leochrist.service.RegisterManager;
 import cn.edu.buaa.leochrist.service.RoleManager;
 
@@ -24,6 +25,8 @@ public class AdminAction extends ActionSupport {
 
 	private Register register;
 
+	private Register searchRegister;
+
 	private Person person;
 
 	private Role role;
@@ -31,6 +34,8 @@ public class AdminAction extends ActionSupport {
 	private RegisterManager registerManager;
 
 	private RoleManager roleManager;
+
+	private PersonManager personManager;
 
 	private List<Register> registers;
 
@@ -72,12 +77,59 @@ public class AdminAction extends ActionSupport {
 		return SUCCESS;
 	}
 
+	public String adminSaveRegister() {
+		this.person = this.personManager.get(this.person.getId());
+		this.role = this.roleManager.get(this.role.getId());
+		this.register = this.person.getRegister();
+		this.person.setRole(this.role);
+		this.register.setIsAvailable(true);
+
+		this.personManager.save(this.person);
+		this.registerManager.save(this.register);
+		return SUCCESS;
+	}
+
+	public String adminRegisterDetail() {
+		this.register = (Register) this.getRequest().getSession().getAttribute(
+				"currentRegister");
+
+		if (null != this.register) {
+			this.person = this.register.getPerson();
+			this.role = this.person.getRole();
+		}
+
+		this.roles = this.roleManager.getAll();
+
+		this.searchRegister = this.registerManager.get(this.searchRegister.getId());
+		return SUCCESS;
+	}
+
+	public String adminRegisterSearch() {
+		this.register = (Register) this.getRequest().getSession().getAttribute(
+				"currentRegister");
+
+		if (null != this.register) {
+			this.person = this.register.getPerson();
+			this.role = this.person.getRole();
+		}
+
+		return SUCCESS;
+	}
+	
 	public Register getRegister() {
 		return register;
 	}
 
 	public void setRegister(Register register) {
 		this.register = register;
+	}
+
+	public Register getSearchRegister() {
+		return searchRegister;
+	}
+
+	public void setSearchRegister(Register searchRegister) {
+		this.searchRegister = searchRegister;
 	}
 
 	public Person getPerson() {
@@ -110,6 +162,14 @@ public class AdminAction extends ActionSupport {
 
 	public void setRoleManager(RoleManager roleManager) {
 		this.roleManager = roleManager;
+	}
+
+	public PersonManager getPersonManager() {
+		return personManager;
+	}
+
+	public void setPersonManager(PersonManager personManager) {
+		this.personManager = personManager;
 	}
 
 	public List<Register> getRegisters() {

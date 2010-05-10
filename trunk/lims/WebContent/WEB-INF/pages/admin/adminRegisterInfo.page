@@ -5,6 +5,7 @@
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
 <link href="${tmplpath}css/index/global.css" type="text/css" rel="stylesheet" />
 <link href="${tmplpath}css/index/index.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript" src="${tmplpath}javascript/jquery-1.4.2.min.js"></script>
 <title>LeoChrist-LIMS</title>
 </head>
 <body>
@@ -21,20 +22,19 @@
 				<tbody>
 					<tr><th>序号</th><th>用户名</th><th>姓名</th><th>身份证</th><th>权限授予</th><th>操作</th></tr>
 					#foreach($register in $registers)
-					<tr><td>$velocityCount</td><td>$register.username</td><td>$register.person.name</td><td>$register.person.dCard</td><td><select class="select_100"><option>请选择</option>#foreach($role in $roles)<option>$role.roleName</option>#end</select></td><td><button class="button_50">审阅</button><button class="button_50">批准</button><button class="button_50">拒绝</button></td></tr>
+					<tr><td>$velocityCount</td><td>$register.username</td><td>$register.person.name</td><td>$register.person.dCard</td><td><select id="select_$velocityCount" onchange="setRoleId('$velocityCount')" class="select_100"><option>请选择</option>#foreach($role in $roles)<option value="$role.id">$role.roleName</option>#end</select></td><td><form action="/lims/admin/adminSaveRegister.action" method="get"><input type="hidden" name="person.id" value="$register.person.id"><input id="input_$velocityCount" type="hidden" name="role.id"><button class="button_50" type="button" onClick="location.href='/lims/admin/adminRegisterDetail.action?searchRegister.id=$register.id'">审阅</button><button class="button_50" type="submit">批准</button><button class="button_50" type="button">拒绝</button></form></td></tr>
 					#end
 				</tbody>
 			</table>
 		</div>
-
-		<div class="admin_nav">	
-			<ul>
-				<li><a href="/lims/admin/adminRegisterInfo.action">用户注册信息</a></li>
-				<li>用户注册信息</li>
-				<li>用户注册信息</li>
-			</ul>
-		</div>
+		#parse("/WEB-INF/pages/admin/common/adminNav.vm")
 	</div>
 	#parse("/WEB-INF/common/foot.vm")
+	<script type="text/javascript">
+	function setRoleId(n) {
+		var checkValue = jQuery('#select_' + n).val();
+		jQuery('#input_' + n).attr("value", checkValue);
+	}
+    </script>
 </body>
 </html>

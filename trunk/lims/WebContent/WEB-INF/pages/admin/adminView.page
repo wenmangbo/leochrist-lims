@@ -10,13 +10,7 @@
 <body>
 	#parse("WEB-INF/common/head.vm")
 	<div class="struct_body">
-		<div class="admin_nav">	
-			<ul>
-				<li><a href="/lims/admin/adminRegisterInfo.action">用户注册信息</a></li>
-				<li>用户注册信息</li>
-				<li>用户注册信息</li>
-			</ul>
-		</div>
+		#parse("/WEB-INF/pages/admin/common/adminNav.vm")
 	</div>
 	#parse("/WEB-INF/common/foot.vm")
 </body>

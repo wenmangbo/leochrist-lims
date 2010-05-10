@@ -21,5 +21,23 @@
 			method="adminRegisterInfo">
 			<result type="velocity" name="success">/WEB-INF/pages/admin/adminRegisterInfo.page</result>
 		</action>
+		
+		<action name="adminSaveRegister" class="cn.edu.buaa.leochrist.actions.AdminAction"
+			method="adminSaveRegister">
+			<result name="success" type="redirect-action">
+				<param name="actionName">adminRegisterInfo</param>
+				<param name="namespace">/admin</param>
+			</result>
+		</action>
+		
+		<action name="adminRegisterDetail" class="cn.edu.buaa.leochrist.actions.AdminAction"
+			method="adminRegisterDetail">
+			<result type="velocity" name="success">/WEB-INF/pages/admin/adminRegisterDetail.page</result>
+		</action>
+		
+		<action name="adminRegisterSearch" class="cn.edu.buaa.leochrist.actions.AdminAction"
+			method="adminRegisterSearch">
+			<result type="velocity" name="success">/WEB-INF/pages/admin/adminRegisterSearch.page</result>
+		</action>
 	</package>
 </struts>

@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+#set($tmplpath="../")
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<link href="${tmplpath}css/index/global.css" type="text/css" rel="stylesheet" />
+<link href="${tmplpath}css/index/index.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript" src="${tmplpath}javascript/jquery-1.4.2.min.js"></script>
+<title>LeoChrist-LIMS</title>
+</head>
+<body>
+	#parse("/WEB-INF/common/head.vm")
+	<div class="struct_body">
+		<div class="register_info">	
+			<table cellpadding="0" cellspacing="0">
+				<col width="10%">
+				<col width="10%">
+				<col width="10%">
+				<col width="20%">
+				<col width="10%">
+				<col width="15%">
+				<col width="15%">
+				<tbody>
+					<tr><th>用户名</th><th>姓名</th><th>姓别</th><th>身份证</th><th>学历</th><th>权限授予</th><th>操作</th></tr>
+					<tr><td>$searchRegister.username</td><td>$searchRegister.person.name</td><td>#if($searchRegister.person.isMale)男#else女#end</td><td>$searchRegister.person.dCard</td><td>$!searchRegister.person.degree.degreeName</td><td><select id="select" onchange="setRoleId()" class="select_100"><option>请选择</option>#foreach($role in $roles)<option value="$role.id">$role.roleName</option>#end</select></td><td><form action="/lims/admin/adminSaveRegister.action" method="get"><input type="hidden" name="person.id" value="$searchRegister.person.id"><input id="input" type="hidden" name="role.id"><button class="button_50" type="submit">批准</button><button class="button_50" type="button">拒绝</button></form></td></tr>
+				</tbody>
+			</table>
+		</div>
+		#parse("/WEB-INF/pages/admin/common/adminNav.vm")
+	</div>
+	#parse("/WEB-INF/common/foot.vm")
+	<script type="text/javascript">
+	function setRoleId() {
+		var checkValue = jQuery('#select').val();
+		jQuery('#input').attr("value", checkValue);
+	}
+    </script>
+</body>
+</html>

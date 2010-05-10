@@ -35,9 +35,22 @@
 			<result type="velocity" name="success">/WEB-INF/pages/admin/adminRegisterDetail.page</result>
 		</action>
 		
+		<action name="adminSearchView" class="cn.edu.buaa.leochrist.actions.AdminAction"
+			method="adminSearchView">
+			<result type="velocity" name="success">/WEB-INF/pages/admin/adminRegisterSearch.page</result>
+		</action>
+		
 		<action name="adminRegisterSearch" class="cn.edu.buaa.leochrist.actions.AdminAction"
 			method="adminRegisterSearch">
 			<result type="velocity" name="success">/WEB-INF/pages/admin/adminRegisterSearch.page</result>
+		</action>
+		
+		<action name="adminChangeRegister" class="cn.edu.buaa.leochrist.actions.AdminAction"
+			method="adminChangeRegister">
+			<result name="success" type="redirect-action">
+				<param name="actionName">adminSearchView</param>
+				<param name="namespace">/admin</param>
+			</result>
 		</action>
 	</package>
 </struts>

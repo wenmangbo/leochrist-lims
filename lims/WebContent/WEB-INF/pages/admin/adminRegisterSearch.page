@@ -13,13 +13,23 @@
 	<div class="struct_body">
 		<div class="register_info">	
 			<table cellpadding="0" cellspacing="0">
-				<col width="50%">
-				<col width="50%">
+				<col width="10%"/>
+				<col width="15%"/>
+				<col width="10%"/>
+				<col width="25%"/>
+				<col width="15%"/>
+				<col width="25%"/>
 				<tbody>
-					<tr><th>用户名搜索:</th><td><form><input class="input_50" type="text"/><button class="button_100" type="submit">搜索</button></form></td></tr>
-					<tr><th>姓名搜索:</th><td><form><input class="input_50" type="text"/><button class="button_100" type="submit">搜索</button></form></td></tr>
-					<tr><th>身份证搜索:</th><td><form><input class="input_50" type="text"/><button class="button_100" type="submit">搜索</button></form></td></tr>
-					<tr><th>年龄搜索:</th><td><form><input class="input_50" type="text"/><button class="button_100" type="submit">搜索</button></form></td></tr>
+					#if(!$registers)
+					<tr><th colspan="2">用户名搜索:</th><td colspan="4"><form action="/lims/admin/adminRegisterSearch.action" method="get"><input name="searchRegister.username" class="input_150" type="text"/><button class="button_100" type="submit">搜索</button></form></td></tr>
+					<tr><th colspan="2">姓名搜索:</th><td colspan="4"><form action="/lims/admin/adminRegisterSearch.action" method="get"><input name="searchPerson.name" class="input_150" type="text"/><button class="button_100" type="submit">搜索</button></form></td></tr>
+					<tr><th colspan="2">身份证搜索:</th><td colspan="4"><form action="/lims/admin/adminRegisterSearch.action" method="get"><input name="searchPerson.dCard" class="input_150" type="text"/><button class="button_100" type="submit">搜索</button></form></td></tr>
+					#else
+						<tr><th>序号</th><th>用户名</th><th>姓名</th><th>身份证</th><th>权限角色</th><th>账户状态</th></tr>
+						#foreach($register in $registers)
+						<tr><td>$velocityCount</td><td>$register.username</td><td>$!register.person.name</td><td>$register.person.dCard</td><td><select id="select_$velocityCount" onchange="setRoleId('$velocityCount')" class="select_100">#foreach($role in $roles)#if($role.id == $register.person.role.id)<option selected="selected" value="$role.id">$role.roleName</option>#else<option value="$role.id">$role.roleName</option>#end#end</select></td><td><form action="/lims/admin/adminChangeRegister.action" method="get"><input type="hidden" name="person.id" value="$register.person.id"><input id="input_$velocityCount" type="hidden" name="role.id"><select name="tempRegister.isAvailable" class="select_100"><option value="true">正常</option><option value="false">冻结</option></select><button class="button_50" type="submit">保存</button></form></td></tr>
+						#end
+					#end
 				</tbody>
 			</table>
 		</div>
@@ -27,9 +37,9 @@
 	</div>
 	#parse("/WEB-INF/common/foot.vm")
 	<script type="text/javascript">
-	function setRoleId() {
-		var checkValue = jQuery('#select').val();
-		jQuery('#input').attr("value", checkValue);
+	function setRoleId(n) {
+		var checkValue = jQuery('#select_' + n).val();
+		jQuery('#input_' + n).attr("value", checkValue);
 	}
     </script>
 </body>

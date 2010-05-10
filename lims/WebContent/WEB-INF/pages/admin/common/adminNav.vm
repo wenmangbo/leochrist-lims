@@ -1,7 +1,7 @@
 		<div class="admin_nav">	
 			<ul>
-				<li><a href="/lims/admin/adminRegisterInfo.action">未批准用户注册信息</a></li>
-				<li><a href="/lims/admin/adminRegisterSearch.action">系统注册用户搜索</a></li>
+				<li><a href="/lims/admin/adminRegisterInfo.action">未批准或冻结用户</a></li>
+				<li><a href="/lims/admin/adminSearchView.action">系统注册用户搜索</a></li>
 				<li>系统全局参数设置</li>
 			</ul>
 		</div>

@@ -31,6 +31,8 @@ public class UserAction extends ActionSupport {
 	private Person person;
 
 	private Role role;
+	
+	private Degree degree;
 
 	private RegisterManager registerManager;
 
@@ -93,7 +95,9 @@ public class UserAction extends ActionSupport {
 		this.person.setLastModifiedDate(date);
 		this.person.setLastLoginDate(date);
 		
-		System.out.println(this.person.getName()+"~~~~~~~~~~~~~!!!!!");
+		if(null != this.person.getDegree()) {
+			this.person.setDegree(this.degreeManager.get(this.person.getDegree().getId()));
+		}
 		this.person = this.personManager.save(this.person);
 
 		this.register.setPerson(this.person);
@@ -191,6 +195,14 @@ public class UserAction extends ActionSupport {
 
 	public void setRole(Role role) {
 		this.role = role;
+	}
+
+	public Degree getDegree() {
+		return degree;
+	}
+
+	public void setDegree(Degree degree) {
+		this.degree = degree;
 	}
 
 	public RegisterManager getRegisterManager() {

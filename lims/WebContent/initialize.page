@@ -11,7 +11,7 @@
 <body>
 	<div class="struct_body">
 		<div class="initialize">
-			<form action="/lims/initialize.action" method="get">
+			<form action="/lims/admin/initialize.action" method="get">
 				<h2>系统初始创建表：</h2>
 				<h3>添加管理员ADMIN:</h3>
 				<p><label class="lable_125">管理员登录名:</label><input name="register.username" class="input_125" type="text"/><strong>*</strong></p>

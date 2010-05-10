@@ -25,9 +25,13 @@ public class AdminAction extends ActionSupport {
 
 	private Register register;
 
+	private Register tempRegister;
+
 	private Register searchRegister;
 
 	private Person person;
+
+	private Person searchPerson;
 
 	private Role role;
 
@@ -100,7 +104,20 @@ public class AdminAction extends ActionSupport {
 
 		this.roles = this.roleManager.getAll();
 
-		this.searchRegister = this.registerManager.get(this.searchRegister.getId());
+		this.searchRegister = this.registerManager.get(this.searchRegister
+				.getId());
+		return SUCCESS;
+	}
+
+	public String adminSearchView() {
+		this.register = (Register) this.getRequest().getSession().getAttribute(
+				"currentRegister");
+
+		if (null != this.register) {
+			this.person = this.register.getPerson();
+			this.role = this.person.getRole();
+		}
+
 		return SUCCESS;
 	}
 
@@ -113,15 +130,77 @@ public class AdminAction extends ActionSupport {
 			this.role = this.person.getRole();
 		}
 
+		this.roles = this.roleManager.getAll();
+
+		List<QueryItem> queryItems = new ArrayList<QueryItem>();
+		QueryItem item;
+		item = new QueryItem();
+		item.setFieldName("isAvailable");
+		item.setKeyword("1");
+		item.setQueryType(QueryType.EQ);
+		queryItems.add(item);
+
+		if (null != this.searchRegister
+				&& null != this.searchRegister.getUsername()) {
+			item = new QueryItem();
+			item.setFieldName("username");
+			item.setKeyword(this.searchRegister.getUsername().trim());
+			item.setQueryType(QueryType.LIKE);
+			queryItems.add(item);
+		}
+
+		if (null != this.searchPerson && null != this.searchPerson.getName()) {
+			item = new QueryItem();
+			item.setFieldName("person.name");
+			item.setKeyword(this.searchPerson.getName().trim());
+			item.setQueryType(QueryType.LIKE);
+			queryItems.add(item);
+		}
+
+		if (null != this.searchPerson && null != this.searchPerson.getdCard()) {
+			item = new QueryItem();
+			item.setFieldName("person.dCard");
+			item.setKeyword(this.searchPerson.getdCard().trim());
+			item.setQueryType(QueryType.EQ);
+			queryItems.add(item);
+		}
+
+		this.registers = this.registerManager.search(queryItems);
+
 		return SUCCESS;
 	}
 	
+	public String adminChangeRegister() {
+		this.person = this.personManager.get(this.person.getId());
+		this.role = this.roleManager.get(this.role.getId());
+		this.register = this.person.getRegister();
+		this.person.setRole(this.role);
+
+		if (null != this.tempRegister) {
+			this.register.setIsAvailable(this.tempRegister.getIsAvailable());
+		} else {
+			this.register.setIsAvailable(true);
+		}
+
+		this.personManager.save(this.person);
+		this.registerManager.save(this.register);
+		return SUCCESS;
+	}
+
 	public Register getRegister() {
 		return register;
 	}
 
 	public void setRegister(Register register) {
 		this.register = register;
+	}
+
+	public Register getTempRegister() {
+		return tempRegister;
+	}
+
+	public void setTempRegister(Register tempRegister) {
+		this.tempRegister = tempRegister;
 	}
 
 	public Register getSearchRegister() {
@@ -138,6 +217,14 @@ public class AdminAction extends ActionSupport {
 
 	public void setPerson(Person person) {
 		this.person = person;
+	}
+
+	public Person getSearchPerson() {
+		return searchPerson;
+	}
+
+	public void setSearchPerson(Person searchPerson) {
+		this.searchPerson = searchPerson;
 	}
 
 	public Role getRole() {

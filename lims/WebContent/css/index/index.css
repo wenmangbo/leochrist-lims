@@ -1,3 +1,65 @@
+div.struct_body div.show {
+	height: 380px;
+	width: 400px;
+}
+
+div.show h2 {
+	color: black;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+div.show ul {
+	width: 100px;
+}
+
+div.show ul li {
+	line-height: 20px;
+	list-style-type: decimal;
+}
+
+div.show ul li a {
+	color: #666;
+}
+
+div.show ul li a:hover {
+	color: red;
+}
+
+div.show img {
+	float: right;
+}
+
+div.struct_body div.news {
+	float: right;
+	background-color: white;
+	height: 380px;
+	width: 590px;
+}
+
+div.news h2 {
+	color: black;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+div.news ul {
+	padding-left: 30px;
+}
+
+div.news ul li {
+	line-height: 20px;
+	list-style-type: decimal;
+}
+
+div.news ul li a {
+	color: #666;
+}
+
+div.news ul li a:hover {
+	color: red;
+}
+
 div.struct_body div.login {
 	text-align: right;
 	margin: 0 auto;
@@ -185,7 +247,136 @@ div.register_info table tr {
 	line-height: 30px;
 }
 
+div.register_info table tr.center td {
+	text-align: center;
+	height: 40px
+}
+
+div.register_info table tr textarea {
+	width: 500px;
+	height: 50px;
+}
+
 div.register_info table tr td,th {
+	padding: 0 0 0 10px;
+	border: 1px black solid;
+}
+
+div.struct_body div.create_project {
+	float: right;
+	width: 758px;
+	padding: 2px;
+	background-color: #660000;
+	border: 1px black solid;
+}
+
+div.create_project table {
+	width: 100%;
+	color: white;
+	background-color: #666666;
+	border: 1px black solid;
+}
+
+div.create_project h2 {
+	width: 100%;
+	color: white;
+	text-align: center;
+	font-size: 24px;
+	background-color: #666666;
+	border: 1px black solid;
+}
+
+div.create_project table tr {
+	line-height: 30px;
+}
+
+div.create_project table tr.center td {
+	text-align: center;
+	height: 40px
+}
+
+div.create_project table tr textarea {
+	width: 500px;
+	height: 50px;
+}
+
+div.create_project table tr td,th {
+	padding: 0 0 0 10px;
+	border: 1px black solid;
+}
+
+div.struct_body div.create_team {
+	float: right;
+	width: 758px;
+	padding: 2px;
+	background-color: #660000;
+	border: 1px black solid;
+}
+
+div.create_team table {
+	width: 100%;
+	color: white;
+	background-color: #666666;
+	border: 1px black solid;
+}
+
+div.create_team h2 {
+	width: 100%;
+	color: white;
+	text-align: center;
+	font-size: 24px;
+	background-color: #666666;
+	border: 1px black solid;
+}
+
+div.create_team table tr {
+	line-height: 30px;
+}
+
+div.create_team table tr.center td {
+	text-align: center;
+	height: 40px
+}
+
+div.create_team table tr td,th {
+	padding: 0 0 0 10px;
+	border: 1px black solid;
+}
+
+div.struct_body div.create_lab {
+	float: right;
+	width: 758px;
+	padding: 2px;
+	background-color: #660000;
+	border: 1px black solid;
+}
+
+div.create_lab table {
+	width: 100%;
+	color: white;
+	background-color: #666666;
+	border: 1px black solid;
+}
+
+div.create_lab h2 {
+	width: 100%;
+	color: white;
+	text-align: center;
+	font-size: 24px;
+	background-color: #666666;
+	border: 1px black solid;
+}
+
+div.create_lab table tr {
+	line-height: 30px;
+}
+
+div.create_lab table tr.center td {
+	text-align: center;
+	height: 40px
+}
+
+div.create_lab table tr td,th {
 	padding: 0 0 0 10px;
 	border: 1px black solid;
 }

@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @SuppressWarnings("serial")
 @Entity
@@ -90,6 +92,7 @@ public class Device implements Serializable {
 		this.isAvailable = isAvailable;
 	}
 
+	@Temporal(TemporalType.DATE)
 	@Column(name = "stock_date", nullable = false)
 	public Date getStockDate() {
 		return stockDate;

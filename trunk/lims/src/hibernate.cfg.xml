@@ -15,7 +15,6 @@
 		<mapping class="cn.edu.buaa.leochrist.model.Project" />
 		<mapping class="cn.edu.buaa.leochrist.model.Register" />
 		<mapping class="cn.edu.buaa.leochrist.model.Role" />
-		<mapping class="cn.edu.buaa.leochrist.model.Storeman" />
 		<mapping class="cn.edu.buaa.leochrist.model.Team" />
 		<mapping class="cn.edu.buaa.leochrist.model.WorkSheet" />
 		<mapping class="cn.edu.buaa.leochrist.model.WorkStatus" />

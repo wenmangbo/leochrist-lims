@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @SuppressWarnings("serial")
 @Entity
@@ -22,7 +24,7 @@ public class Dissertation implements Serializable {
 
 	private Person uploader;
 
-	private String tile;
+	private String title;
 
 	private String file;
 
@@ -54,12 +56,12 @@ public class Dissertation implements Serializable {
 	}
 
 	@Column(name = "title", nullable = false)
-	public String getTile() {
-		return tile;
+	public String getTitle() {
+		return title;
 	}
 
-	public void setTile(String tile) {
-		this.tile = tile;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 	@Column(name = "file", unique = true, nullable = false)
@@ -80,6 +82,7 @@ public class Dissertation implements Serializable {
 		this.author = author;
 	}
 
+	@Temporal(TemporalType.DATE)
 	@Column(name = "pub_date")
 	public Date getPubDate() {
 		return pubDate;
@@ -89,6 +92,7 @@ public class Dissertation implements Serializable {
 		this.pubDate = pubDate;
 	}
 
+	@Temporal(TemporalType.DATE)
 	@Column(name = "upload_date", nullable = false)
 	public Date getUploadDate() {
 		return uploadDate;

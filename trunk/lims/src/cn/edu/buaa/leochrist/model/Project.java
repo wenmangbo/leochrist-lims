@@ -18,6 +18,8 @@ import javax.persistence.Table;
 public class Project implements Serializable {
 
 	private Integer id;
+	
+	private String name;
 
 	private Boolean isClassified;
 
@@ -30,6 +32,15 @@ public class Project implements Serializable {
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+	
+	@Column(name = "name", nullable = false)
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	@Column(name = "is_classified", nullable = false)

@@ -57,11 +57,6 @@
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 
-	<bean id="storemanDao"
-		class="cn.edu.buaa.leochrist.dao.hibernate.StoremanDaoHibernate">
-		<property name="sessionFactory" ref="sessionFactory" />
-	</bean>
-
 	<bean id="teamDao" class="cn.edu.buaa.leochrist.dao.hibernate.TeamDaoHibernate">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>

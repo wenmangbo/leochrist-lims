@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @SuppressWarnings("serial")
 @Entity
@@ -69,6 +71,7 @@ public class WorkStatus implements Serializable {
 		this.report = report;
 	}
 
+	@Temporal(TemporalType.DATE)
 	@Column(name = "create_date", nullable = false)
 	public Date getCreateDate() {
 		return createDate;
@@ -78,6 +81,7 @@ public class WorkStatus implements Serializable {
 		this.createDate = createDate;
 	}
 
+	@Temporal(TemporalType.DATE)
 	@Column(name = "last_modified_date", nullable = false)
 	public Date getLastModifiedDate() {
 		return lastModifiedDate;

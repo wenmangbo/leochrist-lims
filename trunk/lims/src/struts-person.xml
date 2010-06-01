@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="person" extends="default" namespace="/">
+		<action name="personView" class="cn.edu.buaa.leochrist.actions.PersonAction"
+			method="personView">
+			<result type="velocity" name="success">/WEB-INF/pages/person/personView.page</result>
+		</action>
+		
+		<action name="personEdit" class="cn.edu.buaa.leochrist.actions.PersonAction"
+			method="personEdit">
+			<result type="velocity" name="success">/WEB-INF/pages/person/personEdit.page</result>
+		</action>
+		
+		<action name="personEditSave" class="cn.edu.buaa.leochrist.actions.PersonAction"
+			method="personEditSave">
+			<result name="success" type="redirect-action">
+				<param name="actionName">personEdit</param>
+				<param name="namespace">/</param>
+			</result>
+		</action>
+		
+		<action name="personUpload" class="cn.edu.buaa.leochrist.actions.PersonAction"
+			method="personUpload">
+			<result type="velocity" name="success">/WEB-INF/pages/person/personUpload.page</result>
+		</action>
+		
+		<action name="personUploadSave" class="cn.edu.buaa.leochrist.actions.PersonAction"
+			method="personUploadSave">
+			<result name="success" type="redirect-action">
+				<param name="actionName">personUpload</param>
+				<param name="namespace">/</param>
+			</result>
+		</action>
+		
+		<action name="personAllFile" class="cn.edu.buaa.leochrist.actions.PersonAction"
+			method="personAllFile">
+			<result type="velocity" name="success">/WEB-INF/pages/person/personAllFile.page</result>
+		</action>
+		
+	</package>
+</struts>

@@ -41,6 +41,11 @@
 		</global-results>
 	-->
 		</package>
+	<constant name="struts.multipart.saveDir" value="/home/leochrist/workspace/lims/WebContent/file"/>
+	
 	<include file="struts-admin.xml" />
 	<include file="struts-user.xml" />
+	<include file="struts-search.xml" />
+	<include file="struts-introduce.xml" />
+	<include file="struts-person.xml" />
 </struts>

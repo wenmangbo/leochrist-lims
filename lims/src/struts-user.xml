@@ -9,13 +9,13 @@
 			<result type="velocity" name="success">index.page</result>
 			<result name="error">error.jsp</result>
 		</action>
-		
+
 		<action name="registe" class="cn.edu.buaa.leochrist.actions.UserAction"
 			method="registe">
 			<result type="velocity" name="success">registe.page</result>
 			<result name="error">error.jsp</result>
 		</action>
-		
+
 		<action name="registeSave" class="cn.edu.buaa.leochrist.actions.UserAction"
 			method="registeSave">
 			<result name="success" type="redirect-action">
@@ -24,16 +24,16 @@
 			</result>
 			<result name="error">error.jsp</result>
 		</action>
-		
+
 		<action name="login" class="cn.edu.buaa.leochrist.actions.UserAction"
 			method="login">
 			<result name="success" type="redirect-action">
 				<param name="actionName">index</param>
 				<param name="namespace">/</param>
 			</result>
-			<result name="error">login.page</result>
+			<result type="velocity" name="error">login.page</result>
 		</action>
-		
+
 		<action name="logout" class="cn.edu.buaa.leochrist.actions.UserAction"
 			method="logout">
 			<result name="success" type="redirect-action">
@@ -42,6 +42,117 @@
 			</result>
 		</action>
 
+		<action name="userView" class="cn.edu.buaa.leochrist.actions.UserAction"
+			method="userView">
+			<result type="velocity" name="success">/WEB-INF/pages/user/userView.page
+			</result>
+		</action>
+
+		<action name="userCreateProject" class="cn.edu.buaa.leochrist.actions.UserAction"
+			method="userCreateProject">
+			<result type="velocity" name="success">/WEB-INF/pages/user/userCreateProject.page
+			</result>
+		</action>
+
+		<action name="userProjectSave" class="cn.edu.buaa.leochrist.actions.UserAction"
+			method="userProjectSave">
+			<result name="success" type="redirect-action">
+				<param name="actionName">userCreateProject</param>
+				<param name="namespace">/</param>
+			</result>
+		</action>
+
+		<action name="userCreateTeam" class="cn.edu.buaa.leochrist.actions.UserAction"
+			method="userCreateTeam">
+			<result type="velocity" name="success">/WEB-INF/pages/user/userCreateTeam.page
+			</result>
+		</action>
+
+		<action name="userTeamSave" class="cn.edu.buaa.leochrist.actions.UserAction"
+			method="userTeamSave">
+			<result name="success" type="redirect-action">
+				<param name="actionName">userCreateTeam</param>
+				<param name="namespace">/</param>
+			</result>
+		</action>
+
+		<action name="userProjectReport" class="cn.edu.buaa.leochrist.actions.UserAction"
+			method="userProjectReport">
+			<result type="velocity" name="success">/WEB-INF/pages/user/userProjectReport.page
+			</result>
+		</action>
+
+		<action name="userTeamReport" class="cn.edu.buaa.leochrist.actions.UserAction"
+			method="userTeamReport">
+			<result type="velocity" name="success">/WEB-INF/pages/user/userTeamReport.page
+			</result>
+		</action>
 		
+		<action name="userReportList" class="cn.edu.buaa.leochrist.actions.UserAction"
+			method="userReportList">
+			<result type="velocity" name="success">/WEB-INF/pages/user/userReportList.page
+			</result>
+		</action>
+
+		<action name="userWorkList" class="cn.edu.buaa.leochrist.actions.UserAction"
+			method="userWorkList">
+			<result type="velocity" name="success">/WEB-INF/pages/user/userWorkList.page
+			</result>
+		</action>
+		
+		<action name="userCreateLab" class="cn.edu.buaa.leochrist.actions.UserAction"
+			method="userCreateLab">
+			<result type="velocity" name="success">/WEB-INF/pages/user/userCreateLab.page
+			</result>
+		</action>
+		
+		<action name="userAddDevice" class="cn.edu.buaa.leochrist.actions.UserAction"
+			method="userAddDevice">
+			<result type="velocity" name="success">/WEB-INF/pages/user/userAddDevice.page
+			</result>
+		</action>
+		
+		<action name="userDeviceSave" class="cn.edu.buaa.leochrist.actions.UserAction"
+			method="userDeviceSave">
+			<result name="success" type="redirect-action">
+				<param name="actionName">userAddDevice</param>
+				<param name="namespace">/</param>
+			</result>
+		</action>
+		
+		<action name="userLabSave" class="cn.edu.buaa.leochrist.actions.UserAction"
+			method="userLabSave">
+			<result name="success" type="redirect-action">
+				<param name="actionName">userCreateLab</param>
+				<param name="namespace">/</param>
+			</result>
+		</action>
+		
+		<action name="userTeamManage" class="cn.edu.buaa.leochrist.actions.UserAction"
+			method="userTeamManage">
+			<result type="velocity" name="success">/WEB-INF/pages/user/userTeamManage.page
+			</result>
+		</action>
+		
+		<action name="userWorkSheetSave" class="cn.edu.buaa.leochrist.actions.UserAction"
+			method="userWorkSheetSave">
+			<result name="success" type="redirect-action">
+				<param name="actionName">userTeamManage</param>
+				<param name="namespace">/</param>
+			</result>
+		</action>
+		
+		<action name="userWorkSheetDetail" class="cn.edu.buaa.leochrist.actions.UserAction"
+			method="userWorkSheetDetail">
+			<result type="velocity" name="success">/WEB-INF/pages/user/userWorkSheetDetail.page
+			</result>
+		</action>
+		
+		<action name="userLabDevice" class="cn.edu.buaa.leochrist.actions.UserAction"
+			method="userLabDevice">
+			<result type="velocity" name="success">/WEB-INF/pages/user/userLabDevice.page
+			</result>
+		</action>
+
 	</package>
 </struts>

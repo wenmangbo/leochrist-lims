@@ -11,18 +11,17 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @SuppressWarnings("serial")
 @Entity
 @Table(name = "person")
-@Inheritance(strategy = InheritanceType.JOINED)
 public class Person implements Serializable {
 
 	private Integer id;
@@ -128,6 +127,7 @@ public class Person implements Serializable {
 		this.isMale = isMale;
 	}
 
+	@Temporal(TemporalType.DATE)
 	@Column(name = "birthday")
 	public Date getBirthday() {
 		return birthday;
@@ -137,6 +137,7 @@ public class Person implements Serializable {
 		this.birthday = birthday;
 	}
 
+	@Temporal(TemporalType.DATE)
 	@Column(name = "registe_date", nullable = false)
 	public Date getRegisteDate() {
 		return registeDate;
@@ -146,6 +147,7 @@ public class Person implements Serializable {
 		this.registeDate = registeDate;
 	}
 
+	@Temporal(TemporalType.DATE)
 	@Column(name = "last_modified_date", nullable = false)
 	public Date getLastModifiedDate() {
 		return lastModifiedDate;
@@ -155,6 +157,7 @@ public class Person implements Serializable {
 		this.lastModifiedDate = lastModifiedDate;
 	}
 
+	@Temporal(TemporalType.DATE)
 	@Column(name = "last_login_date", nullable = false)
 	public Date getLastLoginDate() {
 		return lastLoginDate;

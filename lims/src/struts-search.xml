@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="search" extends="default" namespace="/">
+		<action name="searchView" class="cn.edu.buaa.leochrist.actions.SearchAction"
+			method="searchView">
+			<result type="velocity" name="success">/WEB-INF/pages/search/searchView.page</result>
+		</action>
+		
+		<action name="searchPerson" class="cn.edu.buaa.leochrist.actions.SearchAction"
+			method="searchPerson">
+			<result type="velocity" name="success">/WEB-INF/pages/search/searchPerson.page</result>
+		</action>
+		
+	</package>
+</struts>

@@ -15,6 +15,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @SuppressWarnings("serial")
 @Entity
@@ -28,6 +30,8 @@ public class WorkSheet implements Serializable {
 	private Member creator;
 
 	private Member owner;
+
+	private String title;
 
 	private String workDetail;
 
@@ -82,6 +86,15 @@ public class WorkSheet implements Serializable {
 		this.owner = owner;
 	}
 
+	@Column(name = "title")
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
 	@Column(name = "work_detail")
 	public String getWorkDetail() {
 		return workDetail;
@@ -91,6 +104,7 @@ public class WorkSheet implements Serializable {
 		this.workDetail = workDetail;
 	}
 
+	@Temporal(TemporalType.DATE)
 	@Column(name = "deadline", nullable = false)
 	public Date getDeadline() {
 		return deadline;
@@ -100,6 +114,7 @@ public class WorkSheet implements Serializable {
 		this.deadline = deadline;
 	}
 
+	@Temporal(TemporalType.DATE)
 	@Column(name = "create_date", nullable = false)
 	public Date getCreateDate() {
 		return createDate;
@@ -109,6 +124,7 @@ public class WorkSheet implements Serializable {
 		this.createDate = createDate;
 	}
 
+	@Temporal(TemporalType.DATE)
 	@Column(name = "last_modified_date", nullable = false)
 	public Date getLastModifiedDate() {
 		return lastModifiedDate;
@@ -118,7 +134,8 @@ public class WorkSheet implements Serializable {
 		this.lastModifiedDate = lastModifiedDate;
 	}
 
-	@Column(name = "finish_date", nullable = false)
+	@Temporal(TemporalType.DATE)
+	@Column(name = "finish_date")
 	public Date getFinishDate() {
 		return finishDate;
 	}

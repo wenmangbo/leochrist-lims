@@ -22,13 +22,17 @@ public class Lab implements Serializable {
 
 	private Integer id;
 
+	private String Name;
+
 	private Team team;
 
-	private Storeman storeman;
+	private Person person;
 
 	private Integer deviceNumber;
 
 	private String address;
+
+	private Boolean isEngage;
 
 	private List<Device> devices;
 
@@ -43,6 +47,15 @@ public class Lab implements Serializable {
 		this.id = id;
 	}
 
+	@Column(name = "name", unique = true, nullable = false)
+	public String getName() {
+		return Name;
+	}
+
+	public void setName(String name) {
+		Name = name;
+	}
+
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "team_id")
 	public Team getTeam() {
@@ -54,13 +67,13 @@ public class Lab implements Serializable {
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "storeman_id")
-	public Storeman getStoreman() {
-		return storeman;
+	@JoinColumn(name = "person_id")
+	public Person getPerson() {
+		return person;
 	}
 
-	public void setStoreman(Storeman storeman) {
-		this.storeman = storeman;
+	public void setPerson(Person person) {
+		this.person = person;
 	}
 
 	@Column(name = "device_number")
@@ -79,6 +92,15 @@ public class Lab implements Serializable {
 
 	public void setAddress(String address) {
 		this.address = address;
+	}
+
+	@Column(name = "is_engage")
+	public Boolean getIsEngage() {
+		return isEngage;
+	}
+
+	public void setIsEngage(Boolean isEngage) {
+		this.isEngage = isEngage;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "lab")

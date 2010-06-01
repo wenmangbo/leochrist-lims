@@ -59,10 +59,6 @@
 		<constructor-arg ref="roleDao" />
 	</bean>
 
-	<bean id="storemanManager" class="cn.edu.buaa.leochrist.service.impl.StoremanManagerImpl">
-		<constructor-arg ref="storemanDao" />
-	</bean>
-
 	<bean id="teamManager" class="cn.edu.buaa.leochrist.service.impl.TeamManagerImpl">
 		<constructor-arg ref="teamDao" />
 	</bean>

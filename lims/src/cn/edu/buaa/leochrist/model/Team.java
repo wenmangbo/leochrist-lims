@@ -22,9 +22,13 @@ public class Team implements Serializable {
 
 	private Integer id;
 
+	private String name;
+
 	private Member teamLeader;
 
 	private Project project;
+
+	private Boolean isEngage;
 
 	private List<Member> members;
 
@@ -39,6 +43,15 @@ public class Team implements Serializable {
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	@Column(name = "name")
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	@OneToOne(fetch = FetchType.LAZY)
@@ -59,6 +72,15 @@ public class Team implements Serializable {
 
 	public void setProject(Project project) {
 		this.project = project;
+	}
+
+	@Column(name = "is_engage")
+	public Boolean getIsEngage() {
+		return isEngage;
+	}
+
+	public void setIsEngage(Boolean isEngage) {
+		this.isEngage = isEngage;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "team")

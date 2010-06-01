@@ -10,6 +10,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @SuppressWarnings("serial")
 @Entity
@@ -18,8 +20,6 @@ import javax.persistence.Table;
 public class NormalProject extends Project implements Serializable {
 
 	private Team team;
-
-	private String name;
 
 	private String information;
 
@@ -41,15 +41,6 @@ public class NormalProject extends Project implements Serializable {
 		this.team = team;
 	}
 
-	@Column(name = "name", nullable = false)
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
 	@Column(name = "information")
 	public String getInformation() {
 		return information;
@@ -68,6 +59,7 @@ public class NormalProject extends Project implements Serializable {
 		this.budget = budget;
 	}
 
+	@Temporal(TemporalType.DATE)
 	@Column(name = "create_date", nullable = false)
 	public Date getCreateDate() {
 		return createDate;
@@ -77,6 +69,7 @@ public class NormalProject extends Project implements Serializable {
 		this.createDate = createDate;
 	}
 
+	@Temporal(TemporalType.DATE)
 	@Column(name = "last_modified_date", nullable = false)
 	public Date getLastModifiedDate() {
 		return lastModifiedDate;
@@ -86,7 +79,8 @@ public class NormalProject extends Project implements Serializable {
 		this.lastModifiedDate = lastModifiedDate;
 	}
 
-	@Column(name = "finish_date", nullable = false)
+	@Temporal(TemporalType.DATE)
+	@Column(name = "finish_date")
 	public Date getFinishDate() {
 		return finishDate;
 	}

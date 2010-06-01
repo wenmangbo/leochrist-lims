@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+#set($tmplpath="")
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<link href="${tmplpath}css/index/global.css" type="text/css" rel="stylesheet" />
+<link href="${tmplpath}css/index/index.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript" src="${tmplpath}javascript/jquery-1.4.2.min.js"></script>
+<title>LeoChrist-LIMS</title>
+</head>
+<body>
+	#parse("/WEB-INF/common/head.vm")
+	<div class="struct_body">
+		<div class="register_info">
+			<form action="/lims/personUploadSave.action" method="post" enctype="multipart/form-data">	
+			<table cellpadding="0" cellspacing="0">
+				<col width="30%"/>
+				<col width="70%"/>
+				<tbody>
+					<tr><th>论文名称</th><td><input name="dissertation.title" class="input_100" type="text"/></td></tr>
+					<tr><th>论文作者</th><td><input name="dissertation.author" class="input_100" type="text"/></td></tr>
+					<tr><th>发表时间</th><td></td></tr>
+					<tr><th>文件</th><td><input name="file" style="height:26px;" type="file"/></td></tr>
+					<tr class="center"><td colspan="2"><button class="button_100" type="submit">上传</button></td></tr>
+				</tbody>
+			</table>
+			</form>
+		</div>
+		#parse("/WEB-INF/pages/person/common/personNav.vm")
+	</div>
+	#parse("/WEB-INF/common/foot.vm")
+</body>
+</html>

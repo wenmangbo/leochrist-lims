@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+#set($tmplpath="")
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<link href="${tmplpath}css/index/global.css" type="text/css" rel="stylesheet" />
+<link href="${tmplpath}css/index/index.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript" src="${tmplpath}javascript/jquery-1.4.2.min.js"></script>
+<title>LeoChrist-LIMS</title>
+</head>
+<body>
+	#parse("/WEB-INF/common/head.vm")
+	<div class="struct_body">
+		<div class="create_team">
+			#if($message)
+			<h2>$message</h2>
+			#else
+			<form action="/lims/userTeamSave.action" method="get">
+			<table cellpadding="0" cellspacing="0">
+				<col width="25%"/>
+				<col width="75%"/>
+				<tbody>
+					<tr><th>小组名称</th><td><input name="team.name" class="input_190" type="text"/></td></tr>
+					<tr><th>小组组长</th><td><p>
+					#if(0 == $persons.size())
+						目前没有空闲可供调配的人员
+					#end
+					#foreach($person in $persons)
+					$person.name
+					<input name="teamLeaderId" value="$person.id" type="radio"/>
+					#end
+					</p></td></tr>
+					<tr><th>小组成员</th><td><p>
+					#foreach($person in $persons)
+					$person.name
+					<input name="memberIds" value="$person.id" type="checkbox"/>
+					#end
+					</p></td></tr>
+					<tr class="center"><td colspan="2"><button class="button_75" type="submit">创建小组</button></td></tr>
+				</tbody>
+			</table>
+			</form>
+			#end
+		</div>
+		#parse("/WEB-INF/pages/user/common/userNav.vm")
+	</div>
+	#parse("/WEB-INF/common/foot.vm")
+</body>
+</html>

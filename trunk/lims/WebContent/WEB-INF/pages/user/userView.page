@@ -1,0 +1,17 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+#set($tmplpath="")
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<link href="${tmplpath}css/index/global.css" type="text/css" rel="stylesheet" />
+<link href="${tmplpath}css/index/index.css" type="text/css" rel="stylesheet" />
+<title>LeoChrist-LIMS</title>
+</head>
+<body>
+	#parse("WEB-INF/common/head.vm")
+	<div class="struct_body">
+		#parse("/WEB-INF/pages/user/common/userNav.vm")
+	</div>
+	#parse("/WEB-INF/common/foot.vm")
+</body>
+</html>

@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+#set($tmplpath="")
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<link href="${tmplpath}css/index/global.css" type="text/css" rel="stylesheet" />
+<link href="${tmplpath}css/index/index.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript" src="${tmplpath}javascript/jquery-1.4.2.min.js"></script>
+<title>LeoChrist-LIMS</title>
+</head>
+<body>
+	#parse("/WEB-INF/common/head.vm")
+	<div class="struct_body">
+		<div class="create_lab">
+			#if($message)
+			<h2>$message</h2>
+			#else
+			<form action="/lims/userDeviceSave.action" method="post">
+			<table cellpadding="0" cellspacing="0">
+				<col width="25%"/>
+				<col width="75%"/>
+				<tbody>
+					<tr><th>选择实验室</th><td>
+					<select class="select_150" name="labId">
+						<option>请选择实验室</option>
+						#foreach($lab in $labs)
+							<option value="$lab.id">$lab.name</option>
+						#end
+					</select>
+					</td></tr>
+					<tr><th>设备名称</th><td><input name="device.name" class="input_190" type="text"/></td></tr>
+					<tr><th>设备价格</th><td>￥<input name="device.price" class="input_50" type="text"/>元</td></tr>
+					<tr class="center"><td colspan="2"><button class="button_75" type="submit">添加</button></td></tr>
+				</tbody>
+			</table>
+			</form>
+			#end
+		</div>
+		#parse("/WEB-INF/pages/user/common/userNav.vm")
+	</div>
+	#parse("/WEB-INF/common/foot.vm")
+</body>
+</html>

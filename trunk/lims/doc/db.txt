@@ -117,7 +117,7 @@ ALTER TABLE `leochrist_lims`.`dissertation` ADD CONSTRAINT `dissertation_person`
 CREATE TABLE  `leochrist_lims`.`device` (
   `id` int(128) NOT NULL AUTO_INCREMENT,
   `lab_id` int(128) DEFAULT NULL,
-  `user` int(32) DEFAULT NULL,
+  `person_id` int(32) DEFAULT NULL,
   `name` varchar(32) NOT NULL,
   `price` double NOT NULL,
   `is_available` tinyint(1) DEFAULT '1',
@@ -128,36 +128,34 @@ CREATE TABLE  `leochrist_lims`.`device` (
 
 CREATE TABLE  `leochrist_lims`.`lab` (
   `id` int(128) NOT NULL AUTO_INCREMENT,
+  `name` varchar(64) NOT NULL,
   `team_id` int(32) DEFAULT NULL,
-  `storeman_id` int(32) DEFAULT NULL,
+  `person_id` int(32) DEFAULT NULL,
   `device_number` int(4) DEFAULT NULL,
   `address` varchar(128) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8
-
-
-CREATE TABLE  `leochrist_lims`.`storeman` (
-  `id` int(32) NOT NULL,
+  `is_engage` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8
 
 
 CREATE TABLE  `leochrist_lims`.`team` (
   `id` int(32) NOT NULL AUTO_INCREMENT,
+  `name` varchar(64) NOT NULL,
   `team_leader_id` int(32) DEFAULT NULL,
   `project_id` int(32) DEFAULT NULL,
+  `is_engage` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8
 
 
-lab 与 team storeman 外键关联
+lab 与 team person 外键关联
 ------------------------------
 ALTER TABLE `leochrist_lims`.`lab` ADD CONSTRAINT `lab_team` FOREIGN KEY `lab_team` (`team_id`)
     REFERENCES `team` (`id`)
     ON DELETE RESTRICT
     ON UPDATE RESTRICT,
- ADD CONSTRAINT `lab_storeman` FOREIGN KEY `lab_storeman` (`storeman_id`)
-    REFERENCES `storeman` (`id`)
+ ADD CONSTRAINT `lab_person` FOREIGN KEY `lab_person` (`person_id`)
+    REFERENCES `person` (`id`)
     ON DELETE RESTRICT
     ON UPDATE RESTRICT;
 ------------------------------
@@ -174,6 +172,7 @@ ALTER TABLE `leochrist_lims`.`device` ADD CONSTRAINT `device_lab` FOREIGN KEY `d
 
 CREATE TABLE  `leochrist_lims`.`project` (
   `id` int(32) NOT NULL AUTO_INCREMENT,
+  `name` varchar(64) NOT NULL,
   `is_classified` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8
@@ -182,12 +181,11 @@ CREATE TABLE  `leochrist_lims`.`project` (
 CREATE TABLE  `leochrist_lims`.`classified_project` (
   `id` int(32) NOT NULL,
   `team_id` int(32) DEFAULT NULL,
-  `name` varchar(64) NOT NULL,
   `information` varchar(512) DEFAULT NULL,
   `budget` double NOT NULL,
   `create_date` date NOT NULL,
   `last_modified_date` date NOT NULL,
-  `finish_date` date NOT NULL,
+  `finish_date` date DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8
 
@@ -195,18 +193,18 @@ CREATE TABLE  `leochrist_lims`.`classified_project` (
 CREATE TABLE  `leochrist_lims`.`normal_project` (
   `id` int(32) NOT NULL,
   `team_id` int(32) DEFAULT NULL,
-  `name` varchar(64) NOT NULL,
   `information` varchar(512) DEFAULT NULL,
   `budget` double NOT NULL,
   `create_date` date NOT NULL,
   `last_modified_date` date NOT NULL,
-  `finish_date` date NOT NULL,
+  `finish_date` date DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8
 
 
 CREATE TABLE  `leochrist_lims`.`member` (
-  `id` int(32) NOT NULL,
+  `id` int(32) NOT NULL AUTO_INCREMENT,
+  `person_id` int(32) NOT NULL,
   `team_id` int(32) NOT NULL,
   `project_id` int(32) DEFAULT NULL,
   `is_team_leader` tinyint(1) DEFAULT '0',
@@ -219,11 +217,12 @@ CREATE TABLE  `leochrist_lims`.`work_sheet` (
   `project_id` int(32) NOT NULL,
   `creator` int(32) NOT NULL,
   `owner` int(32) NOT NULL,
+  `title` varchar(64) NOT NULL,
   `work_detail` varchar(512) DEFAULT NULL,
-  `dealine` date NOT NULL,
+  `deadline` date NOT NULL,
   `create_date` date NOT NULL,
   `last_modified_date` date NOT NULL,
-  `finish_date` date NOT NULL,
+  `finish_date` date DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8
 
@@ -241,20 +240,24 @@ CREATE TABLE  `leochrist_lims`.`work_status` (
 
 team 与 member project 外键关联
 ------------------------------
-ALTER TABLE `leochrist_lims`.`team` ADD CONSTRAINT `team_member` FOREIGN KEY `team_member` (`team_leader_id`)
+ALTER TABLE `leochrist_lims`.`team` ADD CONSTRAINT `team_teamleader` FOREIGN KEY `team_teamleader` (`team_leader_id`)
     REFERENCES `member` (`id`)
     ON DELETE RESTRICT
     ON UPDATE RESTRICT,
- ADD CONSTRAINT `team_project` FOREIGN KEY `team_project` (`project_id`)
+ ADD CONSTRAINT `team_project2` FOREIGN KEY `team_project2` (`project_id`)
     REFERENCES `project` (`id`)
     ON DELETE RESTRICT
     ON UPDATE RESTRICT;
 ------------------------------
 
 
-member 与 team project 外键关联
+member 与person team project 外键关联
 ------------------------------
-ALTER TABLE `leochrist_lims`.`member` ADD CONSTRAINT `member_team` FOREIGN KEY `member_team` (`team_id`)
+ALTER TABLE `leochrist_lims`.`member` ADD CONSTRAINT `member_person` FOREIGN KEY `member_person` (`person_id`)
+    REFERENCES `person` (`id`)
+    ON DELETE RESTRICT
+    ON UPDATE RESTRICT,
+ ADD CONSTRAINT `member_team` FOREIGN KEY `member_team` (`team_id`)
     REFERENCES `team` (`id`)
     ON DELETE RESTRICT
     ON UPDATE RESTRICT,

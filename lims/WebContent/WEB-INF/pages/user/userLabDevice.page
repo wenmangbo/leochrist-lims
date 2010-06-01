@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+#set($tmplpath="")
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<link href="${tmplpath}css/index/global.css" type="text/css" rel="stylesheet" />
+<link href="${tmplpath}css/index/index.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript" src="${tmplpath}javascript/jquery-1.4.2.min.js"></script>
+<title>LeoChrist-LIMS</title>
+</head>
+<body>
+	#parse("/WEB-INF/common/head.vm")
+	<div class="struct_body">
+		<div class="create_lab">
+			#if($message)
+			<h2>$message</h2>
+			#else
+			<form action="/lims/userLabDevice.action" method="post">
+			<table cellpadding="0" cellspacing="0">
+				<tbody>
+					<tr><th>选择实验室</th><td>
+					<select class="select_150" name="labId">
+						<option>请选择实验室</option>
+						#foreach($lab in $labs)
+							<option value="$lab.id">$lab.name</option>
+						#end
+					</select>
+					</td>
+					<td><button class="button_100" type="submit">确定</button></td></tr>
+				</tbody>
+			</table>
+			</form>
+			#end
+			#if($devices)
+			<table cellpadding="0" cellspacing="0">
+				<tbody>
+					<tr><th>序号</th><th>设备名称</th><th>使用者</th><th>状态</th><th>操作</th></tr>
+					#foreach($device in $devices)
+						<tr><td>$velocityCount</td><td>$device.name</td><td>$!device.user.name</td><td>#if($device.isAvailable)正常#else不正常#end</td><td><a href="#">修改</a></td></tr>
+					#end
+				</tbody>
+			</table>
+			#end
+		</div>
+		#parse("/WEB-INF/pages/user/common/userNav.vm")
+	</div>
+	#parse("/WEB-INF/common/foot.vm")
+</body>
+</html>

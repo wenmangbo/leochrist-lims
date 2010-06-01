@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+#set($tmplpath="")
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<link href="${tmplpath}css/index/global.css" type="text/css" rel="stylesheet" />
+<link href="${tmplpath}css/index/index.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript" src="${tmplpath}javascript/jquery-1.4.2.min.js"></script>
+<title>LeoChrist-LIMS</title>
+</head>
+<body>
+	#parse("/WEB-INF/common/head.vm")
+	<div class="struct_body">
+		<div class="register_info">
+			<form action="/lims/personEditSave.action" method="post">
+			<table cellpadding="0" cellspacing="0">
+				<col width="30%"/>
+				<col width="70%"/>
+				<tbody>
+					<tr><th>姓名</th><td><input name="p.name" value="$person.name" class="input_100" type="text"/></td></tr>
+					<tr><th>身份证</th><td><input name="p.dCard" value="$person.dCard" class="input_100" type="text"/></td></tr>
+					<tr><th>出生日期</th><td><input name="year" value="$year" class="input_50" type="text"/><label class="lable_25">年</label><input name="month" value="$month" class="input_50" type="text"/><label class="lable_25">月</label><input name="day" value="$day" class="input_50" type="text"/><label class="lable_25">日</label></td></p>
+					<tr><th>学历</th><td><select name="degreeId" class="select_100">
+				<option>请选择</option>
+				#foreach($degree in $degrees)
+					#if($degree.id == $person.degree.id)
+					<option selected="selected" value="$degree.id">$degree.degreeName</option>
+					#else
+					<option value="$degree.id">$degree.degreeName</option>
+					#end
+				#end
+				</select></td></tr>
+					<tr><th>密码</th><td><input name="password" class="input_100" type="password"/><input class="input_100" type="password"/></td></tr>
+					<tr><th>个人简介</th><td><textarea name="p.introduction"  value="$person.introduction"></textarea></td></tr>
+					<tr class="center"><td colspan="2"><button class="button_100" type="submit">修改</button></td></tr>
+				</tbody>
+			</table>
+			</form>
+		</div>
+		#parse("/WEB-INF/pages/person/common/personNav.vm")
+	</div>
+	#parse("/WEB-INF/common/foot.vm")
+</body>
+</html>

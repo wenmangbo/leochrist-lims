@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+#set($tmplpath="")
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<link href="${tmplpath}css/index/global.css" type="text/css" rel="stylesheet" />
+<link href="${tmplpath}css/index/index.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript" src="${tmplpath}javascript/jquery-1.4.2.min.js"></script>
+<title>LeoChrist-LIMS</title>
+</head>
+<body>
+	#parse("/WEB-INF/common/head.vm")
+	<div class="struct_body">
+		<div class="create_project">
+			#if($message)
+			<h2>$message</h2>
+			#else
+			<form action="/lims/userProjectSave.action" method="post">	
+			<table cellpadding="0" cellspacing="0">
+				<col width="25%"/>
+				<col width="75%"/>
+				<tbody>
+					<tr><th>项目名称</th><td><input name="normalProject.name" class="input_190" type="text"/></td></tr>
+					<tr><th>项目级别</th><td>普通<input name="normalProject.isClassified" value="false" type="radio"/>机密<input name="normalProject.isClassified" value="true" type="radio"/></td></tr>
+					<tr><th>项目预算</th><td>￥<input name="normalProject.budget" class="input_50" type="text"/>万元</td></tr>
+					<tr><th>项目小组</th><td>
+					<select class="select_150" name="teamId">
+						<option>请选择项目实施小组</option>
+						#foreach($team in $teams)
+							<option value="$team.id">$team.name</option>
+						#end
+					</select>
+					</td></tr>
+					<tr><th>项目简介</th><td><textarea name="normalProject.information"></textarea></td></tr>
+					<tr class="center"><td colspan="2"><button class="button_150" type="submit">创建项目</button></td></tr>
+				</tbody>
+			</table>
+			</form>
+			#end
+		</div>
+		#parse("/WEB-INF/pages/user/common/userNav.vm")
+	</div>
+	#parse("/WEB-INF/common/foot.vm")
+</body>
+</html>

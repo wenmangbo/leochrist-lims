@@ -1,0 +1,18 @@
+		<div class="admin_nav">	
+			<ul>
+				#if("leader" == $role.roleName)
+				<li><a href="/lims/userCreateProject.action">创建项目</a></li>
+				<li><a href="/lims/userCreateTeam.action">创建项目小组</a></li>
+				<li><a href="/lims/userTeamManage.action">小组工作分配</a></li>
+				<li><a href="/lims/userReportList.action">小组工作汇报</a></li>
+				#end
+				#if("member" == $role.roleName)
+				<li><a href="/lims/userWorkList.action">工作列表</a></li>
+				#end
+				#if("storeman" == $role.roleName)
+				<li><a href="/lims/userCreateLab.action">创建实验室</a></li>
+				<li><a href="/lims/userAddDevice.action">实验室设备添加</a></li>
+				<li><a href="/lims/userLabDevice.action">实验室设备情况汇报</a></li>
+				#end
+			</ul>
+		</div>

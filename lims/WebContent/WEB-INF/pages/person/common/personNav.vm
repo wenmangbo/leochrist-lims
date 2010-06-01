@@ -1,0 +1,7 @@
+		<div class="admin_nav">	
+			<ul>
+				<li><a href="/lims/personEdit.action">个人信息修改</a></li>
+				<li><a href="/lims/personAllFile.action">论文管理</a></li>
+				<li><a href="/lims/personUpload.action">论文上传</a></li>
+			</ul>
+		</div>

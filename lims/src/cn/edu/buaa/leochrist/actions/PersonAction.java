@@ -34,6 +34,8 @@ public class PersonAction extends ActionSupport {
 
 	private File file;
 
+	private Integer delId;
+
 	private Dissertation dissertation;
 
 	private Integer degreeId;
@@ -80,6 +82,11 @@ public class PersonAction extends ActionSupport {
 		return SUCCESS;
 	}
 
+	public String personDel() {
+		this.dissertationManager.remove(delId);
+		return SUCCESS;
+	}
+
 	@SuppressWarnings("deprecation")
 	public String personEdit() {
 		this.register = (Register) this.getRequest().getSession().getAttribute(
@@ -92,8 +99,8 @@ public class PersonAction extends ActionSupport {
 
 		this.degrees = this.degreeManager.getAll();
 
-		year = person.getBirthday().getYear();
-		month = person.getBirthday().getMonth();
+		year = person.getBirthday().getYear() + 1900;
+		month = person.getBirthday().getMonth() + 1;
 		day = person.getBirthday().getDate();
 
 		return SUCCESS;
@@ -118,9 +125,9 @@ public class PersonAction extends ActionSupport {
 		Date date = new Date();
 
 		this.person.setLastModifiedDate(date);
-		date.setYear(year);
-		date.setMonth(month);
-		date.setDate(day);
+		date.setYear(this.year - 1900);
+		date.setMonth(this.month - 1);
+		date.setDate(this.day);
 		this.person.setBirthday(date);
 
 		this.degree = this.degreeManager.get(degreeId);
@@ -167,6 +174,7 @@ public class PersonAction extends ActionSupport {
 		return SUCCESS;
 	}
 
+	@SuppressWarnings("deprecation")
 	public String personUploadSave() {
 		this.register = (Register) this.getRequest().getSession().getAttribute(
 				"currentRegister");
@@ -177,7 +185,8 @@ public class PersonAction extends ActionSupport {
 		}
 
 		String newFileName = new Date().toString() + ".pdf";
-		File newFile = new File("/home/leochrist/workspace/lims/WebContent/file/" + newFileName);
+		File newFile = new File(
+				"/home/leochrist/workspace/lims/WebContent/file/" + newFileName);
 
 		try {
 			FileOutputStream fos = new FileOutputStream(newFile);
@@ -190,9 +199,13 @@ public class PersonAction extends ActionSupport {
 			Dissertation d = new Dissertation();
 			d.setAuthor(this.dissertation.getAuthor());
 			d.setFile(newFileName);
-			d.setPubDate(new Date());
+			Date date = new Date();
 			d.setTitle(this.dissertation.getTitle());
-			d.setUploadDate(new Date());
+			d.setUploadDate(date);
+			date.setYear(this.year - 1900);
+			date.setMonth(this.month - 1);
+			date.setDate(this.day);
+			d.setPubDate(date);
 			d.setUploader(person);
 
 			this.dissertationManager.save(d);
@@ -224,6 +237,14 @@ public class PersonAction extends ActionSupport {
 		this.dissertations = this.dissertationManager.search(queryItems);
 
 		return SUCCESS;
+	}
+
+	public Integer getDelId() {
+		return delId;
+	}
+
+	public void setDelId(Integer delId) {
+		this.delId = delId;
 	}
 
 	public List<Dissertation> getDissertations() {

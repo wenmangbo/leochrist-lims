@@ -35,6 +35,14 @@
 			</result>
 		</action>
 		
+		<action name="personDel" class="cn.edu.buaa.leochrist.actions.PersonAction"
+			method="personDel">
+			<result name="success" type="redirect-action">
+				<param name="actionName">personView</param>
+				<param name="namespace">/</param>
+			</result>
+		</action>
+		
 		<action name="personAllFile" class="cn.edu.buaa.leochrist.actions.PersonAction"
 			method="personAllFile">
 			<result type="velocity" name="success">/WEB-INF/pages/person/personAllFile.page</result>

@@ -1,4 +1,4 @@
-<div class="struts_head"><img src="${tmplpath}img/index/logo.gif" alt="logo"/><img src="${tmplpath}img/index/headPic.gif" alt="pic" style="float:right"/><ul class="nav"><li><a href="/lims/index.action">首页</a></li><li><a href="/lims/introduceView.action">实验室概况</a></li><li><a href="#">最新科研成果</a></li>
+<div class="struts_head"><img src="${tmplpath}img/index/logo.gif" alt="logo"/><img src="${tmplpath}img/index/headPic.gif" alt="pic" style="float:right"/><ul class="nav"><li><a href="/lims/index.action">首页</a></li><li><a href="/lims/introduceView.action">实验室概况</a></li><li><a href="/lims/news.action">最新科研成果</a></li>
 <li><a href="/lims/searchView.action">信息查询</a></li>
 #if(${role.roleName} == "admin")
 	<li><a href="/lims/admin/adminView.action">系统管理</a></li>

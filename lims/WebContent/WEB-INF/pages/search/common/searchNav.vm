@@ -2,6 +2,6 @@
 			<ul>
 				<li><a href="/lims/searchPerson.action">实验室人员查询</a></li>
 				<li><a href="#">实验室科研项目查询</a></li>
-				<li><a href="#">实验论文搜索</a></li>
+				<li><a href="/lims/searchDissertation.action">实验论文搜索</a></li>
 			</ul>
 		</div>

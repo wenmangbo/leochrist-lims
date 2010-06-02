@@ -12,13 +12,14 @@
 	#parse("/WEB-INF/common/head.vm")
 	<div class="struct_body">
 		<div class="register_info">	
-			<form action="/lims/searchPersonByName.action" method="post">
 			<table cellpadding="0" cellspacing="0">
 				<tbody>
-					<tr><th>姓名查询</th><td><input name="name" class="input_100" type="text"/></td><td><button class="button_100" type="submit">搜索</button></td><td><a href="/lims/searchPersonAll.action">显示所有人员</a></td></tr>
+					<tr><th>序号</th><th>姓名</th><th>性别</th></tr>
+					#foreach($person in $persons)
+					<tr><td>$velocityCount</td><td><a href="/lims/searchResult.action?personId=$person.id">$person.name</a></td><td>#if($person.isMale)男#else女#end</td></tr>
+					#end
 				</tbody>
 			</table>
-			</form>
 		</div>
 		#parse("/WEB-INF/pages/search/common/searchNav.vm")
 	</div>

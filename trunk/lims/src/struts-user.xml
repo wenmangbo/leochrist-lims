@@ -9,6 +9,11 @@
 			<result type="velocity" name="success">index.page</result>
 			<result name="error">error.jsp</result>
 		</action>
+		
+		<action name="news" class="cn.edu.buaa.leochrist.actions.UserAction"
+			method="news">
+			<result type="velocity" name="success">news.page</result>
+		</action>
 
 		<action name="registe" class="cn.edu.buaa.leochrist.actions.UserAction"
 			method="registe">

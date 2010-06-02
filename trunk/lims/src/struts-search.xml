@@ -14,5 +14,35 @@
 			<result type="velocity" name="success">/WEB-INF/pages/search/searchPerson.page</result>
 		</action>
 		
+		<action name="searchPersonByName" class="cn.edu.buaa.leochrist.actions.SearchAction"
+			method="searchPersonByName">
+			<result type="velocity" name="success">/WEB-INF/pages/search/searchPersonByName.page</result>
+		</action>
+		
+		<action name="searchPersonAll" class="cn.edu.buaa.leochrist.actions.SearchAction"
+			method="searchPersonAll">
+			<result type="velocity" name="success">/WEB-INF/pages/search/searchPersonByName.page</result>
+		</action>
+		
+		<action name="searchResult" class="cn.edu.buaa.leochrist.actions.SearchAction"
+			method="searchResult">
+			<result type="velocity" name="success">/WEB-INF/pages/search/searchResult.page</result>
+		</action>
+		
+		<action name="searchDissertation" class="cn.edu.buaa.leochrist.actions.SearchAction"
+			method="searchDissertation">
+			<result type="velocity" name="success">/WEB-INF/pages/search/searchDissertation.page</result>
+		</action>
+		
+		<action name="searchDissertationByName" class="cn.edu.buaa.leochrist.actions.SearchAction"
+			method="searchDissertationByName">
+			<result type="velocity" name="success">/WEB-INF/pages/search/searchDissertationByName.page</result>
+		</action>
+		
+		<action name="searchDissertationAll" class="cn.edu.buaa.leochrist.actions.SearchAction"
+			method="searchDissertationAll">
+			<result type="velocity" name="success">/WEB-INF/pages/search/searchDissertationByName.page</result>
+		</action>
+		
 	</package>
 </struts>

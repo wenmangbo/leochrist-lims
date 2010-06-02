@@ -145,6 +145,18 @@ public class UserAction extends ActionSupport {
 
 		return SUCCESS;
 	}
+	
+	public String news() {
+		this.register = (Register) this.getRequest().getSession().getAttribute(
+				"currentRegister");
+
+		if (null != this.register) {
+			this.person = this.register.getPerson();
+			this.role = this.person.getRole();
+		}
+
+		return SUCCESS;
+	}
 
 	public String registe() {
 		this.degrees = this.degreeManager.getAll();

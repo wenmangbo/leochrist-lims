@@ -1,0 +1,64 @@
+CREATE TABLE  `leochrist_lims`.`degree` (
+  `id` int(4) NOT NULL AUTO_INCREMENT,
+  `degree_name` varchar(32) NOT NULL,
+  `description` varchar(256) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `degree_name` (`degree_name`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8
+
+
+
+CREATE TABLE  `leochrist_lims`.`role` (
+  `id` int(4) NOT NULL AUTO_INCREMENT,
+  `role_name` varchar(32) NOT NULL,
+  `description` varchar(256) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `role_name` (`role_name`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8
+
+
+CREATE TABLE `leochrist_lims`.`register` (
+  `id` INTEGER(32)  NOT NULL AUTO_INCREMENT,
+  `person_id` INTEGER(32)  UNIQUE,
+  `username` VARCHAR(64)  NOT NULL UNIQUE,
+  `password` VARCHAR(128)  NOT NULL,
+  `is_available` BOOLEAN  DEFAULT 0,
+  PRIMARY KEY (`id`)
+)
+ENGINE = InnoDB
+CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+
+CREATE TABLE `leochrist_lims`.`person` (
+  `id` INTEGER(32)  NOT NULL AUTO_INCREMENT,
+  `register_id` INTEGER(32)  UNIQUE,
+  `name` VARCHAR(32) ,
+  `d_card` VARCHAR(32)  NOT NULL UNIQUE,
+  `degree_id` INTEGER(4) ,
+  `role_id` INTEGER(4) ,
+  `is_male` BOOLEAN ,
+  `birthday` DATE ,
+  `registe_date` DATE  NOT NULL,
+  `last_modified_date` DATE  NOT NULL,
+  `last_login_date` DATE  NOT NULL,
+  PRIMARY KEY (`id`),
+  CONSTRAINT `fk_person_degree_degreeid` FOREIGN KEY `fk_person_degree_degreeid` (`degree_id`)
+    REFERENCES `degree` (`id`)
+    ON DELETE RESTRICT
+    ON UPDATE RESTRICT,
+  CONSTRAINT `fk_person_role_roleid` FOREIGN KEY `fk_person_role_roleid` (`role_id`)
+    REFERENCES `role` (`id`)
+    ON DELETE RESTRICT
+    ON UPDATE RESTRICT
+)
+ENGINE = InnoDB
+CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+
+ALTER TABLE `leochrist_lims`.`register` ADD CONSTRAINT `fk_register_person_personis` FOREIGN KEY `fk_register_person_personis` (`person_id`)
+    REFERENCES `person` (`id`)
+    ON DELETE RESTRICT
+    ON UPDATE RESTRICT;
+
+
+

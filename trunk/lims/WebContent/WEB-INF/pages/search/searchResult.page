@@ -12,13 +12,24 @@
 	#parse("/WEB-INF/common/head.vm")
 	<div class="struct_body">
 		<div class="register_info">	
-			<form action="/lims/searchPersonByName.action" method="post">
 			<table cellpadding="0" cellspacing="0">
+				<col width="30%"/>
+				<col width="70%"/>
 				<tbody>
-					<tr><th>姓名查询</th><td><input name="name" class="input_100" type="text"/></td><td><button class="button_100" type="submit">搜索</button></td><td><a href="/lims/searchPersonAll.action">显示所有人员</a></td></tr>
+					<tr><th>姓名</th><td>$p.name</td></tr>
+					<tr><th>身份证</th><td>$p.dCard</td></tr>
+					<tr><th>出生日期</th><td>$p.birthday</td></p>
+					<tr><th>学历</th><td>$p.degree.degreeName</td></tr>
+					<tr><th>个人简介</th><td><p>$p.introduction</p></td></tr>
+					<tr><th>论文</th><td>
+					<ul>
+					#foreach($d in $dissertations)
+					<li><a title="下载，请单击鼠标右键“另存为”" href="/lims/file/$d.file">《$d.title》于$d.pubDate发表</a></li>
+					#end
+					</ul>
+					</td></tr>
 				</tbody>
 			</table>
-			</form>
 		</div>
 		#parse("/WEB-INF/pages/search/common/searchNav.vm")
 	</div>

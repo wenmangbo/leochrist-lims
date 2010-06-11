@@ -230,6 +230,7 @@ CREATE TABLE  `leochrist_lims`.`work_sheet` (
 CREATE TABLE  `leochrist_lims`.`work_status` (
   `id` int(128) NOT NULL AUTO_INCREMENT,
   `work_sheet_id` int(128) NOT NULL,
+  `title` varchar(64) NOT NULL,
   `status` int(4) DEFAULT NULL,
   `report` varchar(512) DEFAULT NULL,
   `create_date` date NOT NULL,

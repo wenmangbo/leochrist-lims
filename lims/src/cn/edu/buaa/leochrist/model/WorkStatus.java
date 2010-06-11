@@ -24,6 +24,8 @@ public class WorkStatus implements Serializable {
 
 	private WorkSheet workSheet;
 
+	private String title;
+
 	private Integer status;
 
 	private String report;
@@ -51,6 +53,15 @@ public class WorkStatus implements Serializable {
 
 	public void setWorkSheet(WorkSheet workSheet) {
 		this.workSheet = workSheet;
+	}
+
+	@Column(name = "title")
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 	@Column(name = "status")

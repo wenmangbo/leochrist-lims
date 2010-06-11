@@ -24,6 +24,7 @@ import cn.edu.buaa.leochrist.model.Register;
 import cn.edu.buaa.leochrist.model.Role;
 import cn.edu.buaa.leochrist.model.Team;
 import cn.edu.buaa.leochrist.model.WorkSheet;
+import cn.edu.buaa.leochrist.model.WorkStatus;
 import cn.edu.buaa.leochrist.model.generic.QueryItem;
 import cn.edu.buaa.leochrist.model.generic.QueryItem.QueryType;
 import cn.edu.buaa.leochrist.service.ClassifiedProjectManager;
@@ -38,6 +39,7 @@ import cn.edu.buaa.leochrist.service.RegisterManager;
 import cn.edu.buaa.leochrist.service.RoleManager;
 import cn.edu.buaa.leochrist.service.TeamManager;
 import cn.edu.buaa.leochrist.service.WorkSheetManager;
+import cn.edu.buaa.leochrist.service.WorkStatusManager;
 
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -78,6 +80,8 @@ public class UserAction extends ActionSupport {
 
 	private Degree degree;
 
+	private WorkStatus workStatus;
+
 	private Device device;
 
 	private NormalProject normalProject;
@@ -93,6 +97,8 @@ public class UserAction extends ActionSupport {
 	private Person temp;
 
 	private WorkSheet workSheet;
+
+	private WorkStatusManager workStatusManager;
 
 	private RegisterManager registerManager;
 
@@ -131,6 +137,8 @@ public class UserAction extends ActionSupport {
 	private List<Member> members;
 
 	private List<WorkSheet> workSheets;
+	
+	private List<WorkStatus> workStatuss;
 
 	private List<Lab> labs;
 
@@ -142,10 +150,19 @@ public class UserAction extends ActionSupport {
 			this.person = this.register.getPerson();
 			this.role = this.person.getRole();
 		}
-
+		
+		this.workSheets = this.workSheetManager.getAll();
+		
+		Date alert = new Date();
+		for(WorkSheet w : workSheets){
+			if (w.getDeadline().getTime() - alert.getTime() < 68400000 * 3 && w.getDeadline().getTime() - alert.getTime() > 0) {
+				w.setId(0);
+			} 
+		}
+		
 		return SUCCESS;
 	}
-	
+
 	public String news() {
 		this.register = (Register) this.getRequest().getSession().getAttribute(
 				"currentRegister");
@@ -314,27 +331,29 @@ public class UserAction extends ActionSupport {
 			this.classifiedProject.setInformation(this.normalProject
 					.getInformation());
 			this.team = this.teamManager.get(teamId);
-			this.team.setIsEngage(true);
-			this.team = this.teamManager.save(team);
 			this.classifiedProject.setTeam(this.team);
-
 			Date date = new Date();
 			this.classifiedProject.setCreateDate(date);
 			this.classifiedProject.setLastModifiedDate(date);
+			this.classifiedProject = this.classifiedProjectManager
+					.save(classifiedProject);
 
-			this.classifiedProjectManager.save(classifiedProject);
+			this.team.setIsEngage(true);
+			this.team.setProject(classifiedProject);
+			this.team = this.teamManager.save(team);
+			this.team = this.teamManager.save(team);
 			this.message = "机密项目创建成功";
 		} else {
 			this.team = this.teamManager.get(teamId);
-			this.team.setIsEngage(true);
-			this.team = this.teamManager.save(team);
 			this.normalProject.setTeam(this.team);
-
 			Date date = new Date();
 			this.normalProject.setCreateDate(date);
 			this.normalProject.setLastModifiedDate(date);
-			this.normalProjectManager.save(normalProject);
+			this.normalProject = this.normalProjectManager.save(normalProject);
 
+			this.team.setIsEngage(true);
+			this.team.setProject(normalProject);
+			this.team = this.teamManager.save(team);
 			this.message = "普通项目创建成功";
 		}
 		return SUCCESS;
@@ -437,7 +456,45 @@ public class UserAction extends ActionSupport {
 
 		return SUCCESS;
 	}
-	
+
+	public String userReportDetail() {
+		this.register = (Register) this.getRequest().getSession().getAttribute(
+				"currentRegister");
+
+		if (null != this.register) {
+			this.person = this.register.getPerson();
+			this.role = this.person.getRole();
+		}
+
+		this.workSheet = this.workSheetManager.get(workSheetId);
+
+		this.workStatuss = this.workSheet.getWorkStatuss();
+
+		return SUCCESS;
+	}
+
+	public String userTeamReportSave() {
+
+		WorkStatus w = new WorkStatus();
+
+		w.setTitle(this.workStatus.getTitle());
+
+		w.setReport(this.workStatus.getReport());
+
+		w.setStatus(this.workStatus.getStatus());
+
+		this.workSheet = this.workSheetManager.get(workSheetId);
+
+		w.setWorkSheet(workSheet);
+
+		w.setCreateDate(new Date());
+
+		w.setLastModifiedDate(new Date());
+		this.workStatusManager.save(w);
+
+		return SUCCESS;
+	}
+
 	public String userReportList() {
 		this.register = (Register) this.getRequest().getSession().getAttribute(
 				"currentRegister");
@@ -446,6 +503,27 @@ public class UserAction extends ActionSupport {
 			this.person = this.register.getPerson();
 			this.role = this.person.getRole();
 		}
+
+		List<QueryItem> queryItems = new ArrayList<QueryItem>();
+		QueryItem item;
+		item = new QueryItem();
+		item.setFieldName("person.id");
+		item.setKeyword(this.person.getId().toString());
+		item.setQueryType(QueryType.EQ);
+		queryItems.add(item);
+
+		this.member = this.memberManager.search(queryItems).get(0);
+
+		this.team = this.member.getTeam();
+
+		queryItems.clear();
+		item = new QueryItem();
+		item.setFieldName("project.id");
+		item.setKeyword(team.getProject().getId().toString());
+		item.setQueryType(QueryType.EQ);
+		queryItems.add(item);
+
+		this.workSheets = this.workSheetManager.search(queryItems);
 
 		return SUCCESS;
 	}
@@ -583,8 +661,8 @@ public class UserAction extends ActionSupport {
 		this.workSheet.setCreator(this.memberManager.get(creatorId));
 		this.workSheet.setOwner(this.memberManager.get(memberId));
 		Date date = new Date();
-		date.setYear(this.year);
-		date.setMonth(this.month);
+		date.setYear(this.year - 1900);
+		date.setMonth(this.month - 1);
 		date.setDate(this.day);
 		this.workSheet.setDeadline(date);
 		date = new Date();
@@ -636,7 +714,7 @@ public class UserAction extends ActionSupport {
 			item.setKeyword(labId.toString());
 			item.setQueryType(QueryType.EQ);
 			queryItems.add(item);
-			
+
 			this.devices = this.deviceManager.search(queryItems);
 		}
 
@@ -653,6 +731,30 @@ public class UserAction extends ActionSupport {
 		}
 
 		return SUCCESS;
+	}
+
+	public WorkStatus getWorkStatus() {
+		return workStatus;
+	}
+
+	public void setWorkStatus(WorkStatus workStatus) {
+		this.workStatus = workStatus;
+	}
+
+	public WorkStatusManager getWorkStatusManager() {
+		return workStatusManager;
+	}
+
+	public void setWorkStatusManager(WorkStatusManager workStatusManager) {
+		this.workStatusManager = workStatusManager;
+	}
+
+	public List<WorkStatus> getWorkStatuss() {
+		return workStatuss;
+	}
+
+	public void setWorkStatuss(List<WorkStatus> workStatuss) {
+		this.workStatuss = workStatuss;
 	}
 
 	public Integer getLabId() {

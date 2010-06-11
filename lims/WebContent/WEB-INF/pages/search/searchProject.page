@@ -11,21 +11,26 @@
 <body>
 	#parse("/WEB-INF/common/head.vm")
 	<div class="struct_body">
-		<div class="create_lab">
+		<div class="register_info">	
+			<form action="/lims/searchPersonByName.action" method="post">
 			<table cellpadding="0" cellspacing="0">
-				<col width="25%"/>
-				<col width="75%"/>
+				<col width="20%"/>
+				<col width="40%"/>
+				<col width="40%"/>
 				<tbody>
-					<tr><th>项目名称</th><td>$project.name</td></tr>
-					<tr><th>标题</th><td>$workSheet.title</td></tr>
-					<tr><th>创建者</th><td>$temp.name</td></tr>
-					<tr><th>工作截止日期</th><td>$workSheet.deadline</td></tr>
-					<tr><th>工作内容</th><td>$workSheet.workDetail</td></tr>
-					<tr class="center"><td colspan="2"><button onClick="location.href='/lims/userTeamReport.action?project.id=$project.id&&workSheet.id=$workSheet.id'" type="button" class="button_150">工作进度汇报</button></td></tr>
+					<tr><th>选择项目</th><td>
+					<select class="select_190">
+					<option>请选择</option>
+					#foreach($normalProject in $normalProjects)
+						<option value="$normalProject.id">$normalProject.name</option>
+					#end
+					</select>
+					</td><th><button class="button_100" type="submit">确定</button></th></tr>
 				</tbody>
 			</table>
+			</form>
 		</div>
-		#parse("/WEB-INF/pages/user/common/userNav.vm")
+		#parse("/WEB-INF/pages/search/common/searchNav.vm")
 	</div>
 	#parse("/WEB-INF/common/foot.vm")
 </body>

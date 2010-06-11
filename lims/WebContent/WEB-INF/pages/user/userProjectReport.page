@@ -17,7 +17,7 @@
 					<tr><th>标题：</th><td><input class="input_190" type="text"/></td></tr>
 					<tr><th>完成进度：</th><td>已完成<input class="input_50" type="text"/>%工作</td></tr>
 					<tr><th>汇报内容：</th><td><textarea></textarea></td></tr>
-					<tr><td colspan="2"><button class="button_75" type="button">提交</button></td></tr>
+					<tr><td colspan="2"><button class="button_75" type="submit">提交</button></td></tr>
 				</tbody>
 			</table>
 		</div>

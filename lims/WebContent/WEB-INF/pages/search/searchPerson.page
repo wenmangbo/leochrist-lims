@@ -15,7 +15,14 @@
 			<form action="/lims/searchPersonByName.action" method="post">
 			<table cellpadding="0" cellspacing="0">
 				<tbody>
-					<tr><th>姓名查询</th><td><input name="name" class="input_100" type="text"/></td><td><button class="button_100" type="submit">搜索</button></td><td><a href="/lims/searchPersonAll.action">显示所有人员</a></td></tr>
+					<tr><th>姓名</th><td><input name="name" class="input_100" type="text"/></td><th>年龄</th><td><input name="name" class="input_100" type="text"/></td><th>学历</th><td>
+					<select class="select_100">
+					<option>请选择</option>
+					#foreach($degree in $degrees)
+						<option value="$degree.id">$degree.degreeName</option>
+					#end
+					</select>
+					</td><td><button class="button_100" type="submit">搜索</button></td><td><a href="/lims/searchPersonAll.action">显示所有人员</a></td></tr>
 				</tbody>
 			</table>
 			</form>

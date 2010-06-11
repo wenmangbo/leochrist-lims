@@ -1,6 +1,6 @@
 div.struct_body div.show {
 	height: 380px;
-	width: 400px;
+	width: 350px;
 }
 
 div.show h2 {
@@ -10,12 +10,15 @@ div.show h2 {
 }
 
 div.show ul {
-	width: 100px;
+	width: 175px;
+	padding-left:30px;
 }
 
 div.show ul li {
 	line-height: 20px;
-	list-style-type: decimal;
+	margin-bottom:5px; 
+	list-style-type:decimal;
+	color:#666;
 }
 
 div.show ul li a {
@@ -32,9 +35,10 @@ div.show img {
 
 div.struct_body div.news {
 	float: right;
+	margin-right:10px;
 	background-color: white;
 	height: 380px;
-	width: 590px;
+	width: 410px;
 }
 
 div.news h2 {

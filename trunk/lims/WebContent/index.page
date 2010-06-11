@@ -10,6 +10,16 @@
 <body>
 	#parse("/WEB-INF/common/head.vm")
 	<div class="struct_body" style="height:380px;margin-top:10px;">
+		<div class="show" style="float:right;width:200px;">
+			<h2>提示预警服务</h2>
+			<ul>
+				#foreach($workSheet in $workSheets)
+					#if($workSheet.id == 0)
+					<li><labe style="color:red">$workSheet.title</labe>工作快要到期了，请注意进度。</li>
+					#end
+				#end
+			</ul>
+		</div>
 		<div class="news">
 			<h2>新闻</h2>
 			<ul>
@@ -25,18 +35,16 @@
 				<li><a href="#">中航集团吴献东副总经理受聘为我校兼职教授[2010-05-24]</a></li>
 				<li><a href="#">北航第49届运动会隆重举行[2010-05-24]</a></li>
 				<li><a href="#">中法工程师学院“中法二号”无人机试飞成功[2010-05-23]</a></li>
-				<li><a href="#">我校举行消防疏散逃生演习及使用灭火器培训活动[2010-05-21]</a></li>
-				<li><a href="#">我校召开学习实践科学发展观活动整改落实“回头看”征求意见会[2010-05-21]</a></li>
 			</ul>
 		</div>
 		<div class="show">
 			<h2>成果展示</h2>
 			<img src="${tmplpath}img/index/1.jpg" alt="pic"/>
 			<ul>
-				<li><a href="#">成果</a></li>
-				<li><a href="#">成果</a></li>
-				<li><a href="#">成果</a></li>
-				<li><a href="#">成果</a></li>
+				<li><a href="#">小型机器人控制实验</a></li>
+				<li><a href="#">机械手臂压力感应实验</a></li>
+				<li><a href="#">小型滑翔机实验</a></li>
+				<li><a href="#">小型飞机发动机改良</a></li>
 			</ul>
 			
 		</div>

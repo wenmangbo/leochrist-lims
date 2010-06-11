@@ -17,8 +17,8 @@
 				<col width="30%"/>
 				<col width="70%"/>
 				<tbody>
-					<tr><th>姓名</th><td><input name="p.name" value="$person.name" class="input_100" type="text"/></td></tr>
-					<tr><th>身份证</th><td><input name="p.dCard" value="$person.dCard" class="input_100" type="text"/></td></tr>
+					<tr><th>姓名</th><td><input name="p.name" value="$!person.name" class="input_100" type="text"/></td></tr>
+					<tr><th>身份证</th><td><input name="p.dCard" value="$!person.dCard" class="input_100" type="text"/></td></tr>
 					<tr><th>出生日期</th><td><input name="year" value="$year" class="input_50" type="text"/><label class="lable_25">年</label><input name="month" value="$month" class="input_50" type="text"/><label class="lable_25">月</label><input name="day" value="$day" class="input_50" type="text"/><label class="lable_25">日</label></td></p>
 					<tr><th>学历</th><td><select name="degreeId" class="select_100">
 				<option>请选择</option>

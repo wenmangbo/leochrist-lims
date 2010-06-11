@@ -1,5 +1,5 @@
 ﻿div.struts_head {
-	height:120px;
+	height:105px;
 	background-color:#660000;
 	margin-bottom:10px;
 }
@@ -53,7 +53,7 @@ ul.nav li.registe_login a.light_blue{
 
 
 div.struts_foot {
-	height:90px;
+	height:70px;
 	padding-left:90px;
 	color:white;
 	background-color:#660000;
@@ -64,7 +64,7 @@ div.struts_foot img {
 	margin-right:10px;
 }
 div.struts_foot div {
-	padding-top:25px;
+	padding-top:16px;
 }
 div.struts_foot div p {
 	font-size:14px;

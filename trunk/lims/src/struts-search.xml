@@ -44,5 +44,10 @@
 			<result type="velocity" name="success">/WEB-INF/pages/search/searchDissertationByName.page</result>
 		</action>
 		
+		<action name="searchProject" class="cn.edu.buaa.leochrist.actions.SearchAction"
+			method="searchProject">
+			<result type="velocity" name="success">/WEB-INF/pages/search/searchProject.page</result>
+		</action>
+		
 	</package>
 </struts>

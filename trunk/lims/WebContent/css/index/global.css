@@ -82,6 +82,7 @@ div.struct_body {
 	font-size: 12px;
 	background-color: white;
 	width:1000px;
+	height:380px;
 }
 div.struct_body:after {
 	content: ".";

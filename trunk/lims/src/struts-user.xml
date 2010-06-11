@@ -93,6 +93,14 @@
 			</result>
 		</action>
 		
+		<action name="userTeamReportSave" class="cn.edu.buaa.leochrist.actions.UserAction"
+			method="userTeamReportSave">
+			<result name="success" type="redirect-action">
+				<param name="actionName">userWorkList</param>
+				<param name="namespace">/</param>
+			</result>
+		</action>
+		
 		<action name="userReportList" class="cn.edu.buaa.leochrist.actions.UserAction"
 			method="userReportList">
 			<result type="velocity" name="success">/WEB-INF/pages/user/userReportList.page
@@ -102,6 +110,12 @@
 		<action name="userWorkList" class="cn.edu.buaa.leochrist.actions.UserAction"
 			method="userWorkList">
 			<result type="velocity" name="success">/WEB-INF/pages/user/userWorkList.page
+			</result>
+		</action>
+		
+		<action name="userReportDetail" class="cn.edu.buaa.leochrist.actions.UserAction"
+			method="userReportDetail">
+			<result type="velocity" name="success">/WEB-INF/pages/user/userReportDetail.page
 			</result>
 		</action>
 		

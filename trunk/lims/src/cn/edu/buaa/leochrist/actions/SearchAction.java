@@ -9,13 +9,17 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.struts2.ServletActionContext;
 
+import cn.edu.buaa.leochrist.model.Degree;
 import cn.edu.buaa.leochrist.model.Dissertation;
+import cn.edu.buaa.leochrist.model.NormalProject;
 import cn.edu.buaa.leochrist.model.Person;
 import cn.edu.buaa.leochrist.model.Register;
 import cn.edu.buaa.leochrist.model.Role;
 import cn.edu.buaa.leochrist.model.generic.QueryItem;
 import cn.edu.buaa.leochrist.model.generic.QueryItem.QueryType;
+import cn.edu.buaa.leochrist.service.DegreeManager;
 import cn.edu.buaa.leochrist.service.DissertationManager;
+import cn.edu.buaa.leochrist.service.NormalProjectManager;
 import cn.edu.buaa.leochrist.service.PersonManager;
 
 import com.opensymphony.xwork2.ActionSupport;
@@ -27,6 +31,8 @@ public class SearchAction extends ActionSupport {
 
 	private String name;
 
+	private String title;
+
 	private Register register;
 
 	private Person person;
@@ -35,13 +41,36 @@ public class SearchAction extends ActionSupport {
 
 	private Role role;
 
+	private DegreeManager degreeManager;
+
 	private DissertationManager dissertationManager;
+
+	private NormalProjectManager normalProjectManager;
 
 	private PersonManager personManager;
 
 	private List<Person> persons;
 
 	private List<Dissertation> dissertations;
+
+	private List<NormalProject> normalProjects;
+
+	private List<Degree> degrees;
+
+	public String searchProject() {
+		this.register = (Register) this.getRequest().getSession().getAttribute(
+				"currentRegister");
+
+		if (null != this.register) {
+			this.person = this.register.getPerson();
+			this.role = this.person.getRole();
+		}
+
+		this.normalProjects = this.normalProjectManager.getAll();
+
+		System.out.println(this.normalProjects.size());
+		return SUCCESS;
+	}
 
 	public String searchView() {
 		this.register = (Register) this.getRequest().getSession().getAttribute(
@@ -88,9 +117,11 @@ public class SearchAction extends ActionSupport {
 			this.role = this.person.getRole();
 		}
 
+		this.degrees = this.degreeManager.getAll();
+
 		return SUCCESS;
 	}
-	
+
 	public String searchDissertation() {
 		this.register = (Register) this.getRequest().getSession().getAttribute(
 				"currentRegister");
@@ -102,7 +133,7 @@ public class SearchAction extends ActionSupport {
 
 		return SUCCESS;
 	}
-	
+
 	public String searchDissertationByName() {
 		this.register = (Register) this.getRequest().getSession().getAttribute(
 				"currentRegister");
@@ -111,21 +142,32 @@ public class SearchAction extends ActionSupport {
 			this.person = this.register.getPerson();
 			this.role = this.person.getRole();
 		}
+		List<QueryItem> queryItems = new ArrayList<QueryItem>();
+
+		if (!title.equals("")) {
+			QueryItem item;
+			item = new QueryItem();
+			item.setFieldName("title");
+			item.setKeyword(title.trim());
+			item.setQueryType(QueryType.LIKE);
+			queryItems.add(item);
+		}
 
 		if (!name.equals("")) {
-			List<QueryItem> queryItems = new ArrayList<QueryItem>();
 			QueryItem item;
 			item = new QueryItem();
 			item.setFieldName("author");
 			item.setKeyword(name.trim());
 			item.setQueryType(QueryType.LIKE);
 			queryItems.add(item);
+		}
 
+		if (0 != queryItems.size()) {
 			this.dissertations = this.dissertationManager.search(queryItems);
 		}
 		return SUCCESS;
 	}
-	
+
 	public String searchDissertationAll() {
 		this.register = (Register) this.getRequest().getSession().getAttribute(
 				"currentRegister");
@@ -136,10 +178,9 @@ public class SearchAction extends ActionSupport {
 		}
 
 		this.dissertations = this.dissertationManager.getAll();
-		
+
 		return SUCCESS;
 	}
-	
 
 	public String searchPersonByName() {
 		this.register = (Register) this.getRequest().getSession().getAttribute(
@@ -201,6 +242,47 @@ public class SearchAction extends ActionSupport {
 
 		this.persons = this.personManager.search(queryItems);
 		return SUCCESS;
+	}
+
+	public DegreeManager getDegreeManager() {
+		return degreeManager;
+	}
+
+	public void setDegreeManager(DegreeManager degreeManager) {
+		this.degreeManager = degreeManager;
+	}
+
+	public List<Degree> getDegrees() {
+		return degrees;
+	}
+
+	public void setDegrees(List<Degree> degrees) {
+		this.degrees = degrees;
+	}
+
+	public NormalProjectManager getNormalProjectManager() {
+		return normalProjectManager;
+	}
+
+	public void setNormalProjectManager(
+			NormalProjectManager normalProjectManager) {
+		this.normalProjectManager = normalProjectManager;
+	}
+
+	public List<NormalProject> getNormalProjects() {
+		return normalProjects;
+	}
+
+	public void setNormalProjects(List<NormalProject> normalProjects) {
+		this.normalProjects = normalProjects;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 	public DissertationManager getDissertationManager() {

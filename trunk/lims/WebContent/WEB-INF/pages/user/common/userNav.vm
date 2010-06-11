@@ -3,8 +3,8 @@
 				#if("leader" == $role.roleName)
 				<li><a href="/lims/userCreateProject.action">创建项目</a></li>
 				<li><a href="/lims/userCreateTeam.action">创建项目小组</a></li>
-				<li><a href="/lims/userTeamManage.action">小组工作分配</a></li>
-				<li><a href="/lims/userReportList.action">小组工作汇报</a></li>
+				<li><a href="/lims/userTeamManage.action">小组成员任务分配</a></li>
+				<li><a href="/lims/userReportList.action">小组任务汇报表</a></li>
 				#end
 				#if("member" == $role.roleName)
 				<li><a href="/lims/userWorkList.action">工作列表</a></li>

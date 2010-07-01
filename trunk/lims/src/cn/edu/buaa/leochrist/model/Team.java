@@ -24,6 +24,8 @@ public class Team implements Serializable {
 
 	private String name;
 
+	private String information;
+
 	private Member teamLeader;
 
 	private Project project;
@@ -52,6 +54,15 @@ public class Team implements Serializable {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	@Column(name = "information")
+	public String getInformation() {
+		return information;
+	}
+
+	public void setInformation(String information) {
+		this.information = information;
 	}
 
 	@OneToOne(fetch = FetchType.LAZY)

@@ -30,7 +30,11 @@ public class Person implements Serializable {
 
 	private String name;
 
+	private String mail;
+
 	private String dCard;
+
+	private String nativePlace;
 
 	private String introduction;
 
@@ -61,6 +65,15 @@ public class Person implements Serializable {
 		this.id = id;
 	}
 
+	@Column(name = "mail")
+	public String getMail() {
+		return mail;
+	}
+
+	public void setMail(String mail) {
+		this.mail = mail;
+	}
+
 	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "register_id")
 	public Register getRegister() {
@@ -89,6 +102,15 @@ public class Person implements Serializable {
 		this.dCard = dCard;
 	}
 
+	@Column(name = "native_place")
+	public String getNativePlace() {
+		return nativePlace;
+	}
+
+	public void setNativePlace(String nativePlace) {
+		this.nativePlace = nativePlace;
+	}
+
 	@Column(name = "introduction")
 	public String getIntroduction() {
 		return introduction;
@@ -108,8 +130,8 @@ public class Person implements Serializable {
 		this.degree = degree;
 	}
 
-	@ManyToOne(fetch = FetchType.EAGER)  
-	@JoinColumn(name = "role_id")  
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "role_id")
 	public Role getRole() {
 		return role;
 	}

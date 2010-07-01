@@ -1,6 +1,7 @@
 package cn.edu.buaa.leochrist.actions;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,18 +11,38 @@ import javax.servlet.http.HttpSession;
 import org.apache.struts2.ServletActionContext;
 
 import cn.edu.buaa.leochrist.model.Person;
+import cn.edu.buaa.leochrist.model.Production;
 import cn.edu.buaa.leochrist.model.Register;
+import cn.edu.buaa.leochrist.model.Result;
 import cn.edu.buaa.leochrist.model.Role;
 import cn.edu.buaa.leochrist.model.generic.QueryItem;
 import cn.edu.buaa.leochrist.model.generic.QueryItem.QueryType;
 import cn.edu.buaa.leochrist.service.PersonManager;
+import cn.edu.buaa.leochrist.service.ProductionManager;
 import cn.edu.buaa.leochrist.service.RegisterManager;
+import cn.edu.buaa.leochrist.service.ResultManager;
 import cn.edu.buaa.leochrist.service.RoleManager;
 
 import com.opensymphony.xwork2.ActionSupport;
 
 @SuppressWarnings("serial")
 public class AdminAction extends ActionSupport {
+
+	private Result result;
+
+	private ResultManager resultManager;
+
+	private Integer year;
+
+	private Integer month;
+
+	private Integer day;
+
+	private Production production;
+
+	private Production p;
+
+	private ProductionManager productionManager;
 
 	private Register register;
 
@@ -53,6 +74,42 @@ public class AdminAction extends ActionSupport {
 			this.person = this.register.getPerson();
 			this.role = this.person.getRole();
 		}
+
+		return SUCCESS;
+	}
+
+	@SuppressWarnings("deprecation")
+	public String adminProductionSave() {
+		this.production = new Production();
+
+		this.production.setName(p.getName());
+		this.production.setOwner(p.getOwner());
+		this.production.setInformation(p.getInformation());
+		this.production.setValidity(p.getValidity());
+		this.production.setType(p.getType());
+		this.production.setEnable(true);
+		this.production.setCou(p.getCou());
+		this.production.setNumber(p.getNumber());
+		Date date = new Date();
+		date.setYear(this.year - 1900);
+		date.setMonth(this.month - 1);
+		date.setDate(this.day);
+		this.production.setDate(date);
+
+		this.productionManager.save(production);
+
+		return SUCCESS;
+	}
+
+	@SuppressWarnings("deprecation")
+	public String adminResultSave() {
+		Date date = new Date();
+		date.setYear(this.year - 1900);
+		date.setMonth(this.month - 1);
+		date.setDate(this.day);
+		this.result.setDate(date);
+
+		this.resultManager.save(result);
 
 		return SUCCESS;
 	}
@@ -90,6 +147,18 @@ public class AdminAction extends ActionSupport {
 
 		this.personManager.save(this.person);
 		this.registerManager.save(this.register);
+		return SUCCESS;
+	}
+
+	public String adminProduction() {
+		this.register = (Register) this.getRequest().getSession().getAttribute(
+				"currentRegister");
+
+		if (null != this.register) {
+			this.person = this.register.getPerson();
+			this.role = this.person.getRole();
+		}
+
 		return SUCCESS;
 	}
 
@@ -169,7 +238,7 @@ public class AdminAction extends ActionSupport {
 
 		return SUCCESS;
 	}
-	
+
 	public String adminChangeRegister() {
 		this.person = this.personManager.get(this.person.getId());
 		this.role = this.roleManager.get(this.role.getId());
@@ -185,6 +254,70 @@ public class AdminAction extends ActionSupport {
 		this.personManager.save(this.person);
 		this.registerManager.save(this.register);
 		return SUCCESS;
+	}
+
+	public Result getResult() {
+		return result;
+	}
+
+	public void setResult(Result result) {
+		this.result = result;
+	}
+
+	public ResultManager getResultManager() {
+		return resultManager;
+	}
+
+	public void setResultManager(ResultManager resultManager) {
+		this.resultManager = resultManager;
+	}
+
+	public Integer getYear() {
+		return year;
+	}
+
+	public void setYear(Integer year) {
+		this.year = year;
+	}
+
+	public Integer getMonth() {
+		return month;
+	}
+
+	public void setMonth(Integer month) {
+		this.month = month;
+	}
+
+	public Integer getDay() {
+		return day;
+	}
+
+	public void setDay(Integer day) {
+		this.day = day;
+	}
+
+	public Production getProduction() {
+		return production;
+	}
+
+	public void setProduction(Production production) {
+		this.production = production;
+	}
+
+	public Production getP() {
+		return p;
+	}
+
+	public void setP(Production p) {
+		this.p = p;
+	}
+
+	public ProductionManager getProductionManager() {
+		return productionManager;
+	}
+
+	public void setProductionManager(ProductionManager productionManager) {
+		this.productionManager = productionManager;
 	}
 
 	public Register getRegister() {

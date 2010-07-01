@@ -18,8 +18,10 @@
 				<col width="70%"/>
 				<tbody>
 					<tr><th>姓名</th><td><input name="p.name" value="$!person.name" class="input_100" type="text"/></td></tr>
+					<tr><th>性别</th><td>#if($person.isMale)男#else女#end</td></tr>
 					<tr><th>身份证</th><td><input name="p.dCard" value="$!person.dCard" class="input_100" type="text"/></td></tr>
-					<tr><th>出生日期</th><td><input name="year" value="$year" class="input_50" type="text"/><label class="lable_25">年</label><input name="month" value="$month" class="input_50" type="text"/><label class="lable_25">月</label><input name="day" value="$day" class="input_50" type="text"/><label class="lable_25">日</label></td></p>
+					<tr><th>出生日期</th><td><input name="year" value="$year" class="input_50" type="text"/><label class="lable_25">年</label><input name="month" value="$month" class="input_50" type="text"/><label class="lable_25">月</label><input name="day" value="$day" class="input_50" type="text"/><label class="lable_25">日</label></td></tr>
+					<tr><th>籍贯</th><td><input name="p.nativePlace" value="$!person.nativePlace" class="input_100" type="text"/></td></tr>
 					<tr><th>学历</th><td><select name="degreeId" class="select_100">
 				<option>请选择</option>
 				#foreach($degree in $degrees)
@@ -30,7 +32,8 @@
 					#end
 				#end
 				</select></td></tr>
-					<tr><th>密码</th><td><input name="password" class="input_100" type="password"/><input class="input_100" type="password"/></td></tr>
+					<tr><th>修改密码</th><td><input name="password" class="input_100" type="password"/><input class="input_100" type="password"/></td></tr>
+					<tr><th>E-mail</th><td><input name="p.mail" value="$!person.mail" class="input_190" type="text"/></td></tr>
 					<tr><th>个人简介</th><td><textarea name="p.introduction"  value="$person.introduction"></textarea></td></tr>
 					<tr class="center"><td colspan="2"><button class="button_100" type="submit">修改</button></td></tr>
 				</tbody>

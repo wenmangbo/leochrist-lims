@@ -10,21 +10,21 @@
 <body>
 	#parse("/WEB-INF/common/head.vm")
 	<div class="struct_body" style="height:380px;margin-top:10px;">
-		<div class="show"  style="float:left; width:200px;">
-			<h2>成果展示1</h2>
-			<img src="${tmplpath}img/index/1.jpg" alt="pic"/>
-		</div>
-		<div class="show"  style="float:left; width:200px;">
-			<h2>成果展示2</h2>
-			<img src="${tmplpath}img/index/2.jpg" alt="pic"/>
-		</div>
-		<div class="show"  style="float:left; width:200px;">
-			<h2>成果展示3</h2>
-			<img src="${tmplpath}img/index/1.jpg" alt="pic"/>
-		</div>
-		<div class="show"  style="float:left; width:200px;">
-			<h2>成果展示4</h2>
-			<img src="${tmplpath}img/index/2.jpg" alt="pic"/>
+		<div class="register_info" style="width:994px">
+		<table cellpadding="0" cellspacing="0">
+				<tbody>
+				<col width="5%"/>
+				<col width="5%"/>
+				<col width="20%"/>
+				<col width="15%"/>
+				<col width="10%"/>
+				<col width="10%"/>
+				<col width="45%"/>
+				<tr><th>序号</th><th><form action="/lims/orderByType.action" method="post"><select name="type" onchange="submit()"><option value="0">类型</option><option value="0">全部</option><option value="1">专利</option><option value="2">奖励</option><option value="3">成果</option></select></form></th><th>名称</th><th>拥有者</th><th>注册/获得时间</th><th>有效期</th><th>简介</th></tr>
+				#foreach($n in $productions)
+					<tr><td>$velocityCount</td><td> #if(1==$n.type)专利#end #if(2==$n.type)奖励#end #if(3==$n.type)成果#end</td><td>$n.name</td><td>$n.owner</td><td>$n.date</td><td>#if($n.validity)$n.validity年#else -- #end</td><td><p style="text-indent:2em;">$!n.information</p></td></tr>
+				#end
+		</table>
 		</div>
 	</div>
 	#parse("/WEB-INF/common/foot.vm")

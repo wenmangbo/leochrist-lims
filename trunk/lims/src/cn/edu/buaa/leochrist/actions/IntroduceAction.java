@@ -12,7 +12,9 @@ import cn.edu.buaa.leochrist.model.NormalProject;
 import cn.edu.buaa.leochrist.model.Person;
 import cn.edu.buaa.leochrist.model.Register;
 import cn.edu.buaa.leochrist.model.Role;
+import cn.edu.buaa.leochrist.model.Team;
 import cn.edu.buaa.leochrist.service.NormalProjectManager;
+import cn.edu.buaa.leochrist.service.TeamManager;
 
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -29,7 +31,11 @@ public class IntroduceAction extends ActionSupport {
 
 	private NormalProjectManager normalProjectManager;
 
+	private TeamManager teamManager;
+
 	private List<NormalProject> normalProjects;
+
+	private List<Team> Teams;
 
 	public String introduceView() {
 		this.register = (Register) this.getRequest().getSession().getAttribute(
@@ -55,6 +61,35 @@ public class IntroduceAction extends ActionSupport {
 		this.normalProjects = this.normalProjectManager.getAll();
 
 		return SUCCESS;
+	}
+
+	public String introduceTeam() {
+		this.register = (Register) this.getRequest().getSession().getAttribute(
+				"currentRegister");
+
+		if (null != this.register) {
+			this.person = this.register.getPerson();
+			this.role = this.person.getRole();
+		}
+
+		this.Teams = this.teamManager.getAll();
+		return SUCCESS;
+	}
+
+	public TeamManager getTeamManager() {
+		return teamManager;
+	}
+
+	public void setTeamManager(TeamManager teamManager) {
+		this.teamManager = teamManager;
+	}
+
+	public List<Team> getTeams() {
+		return Teams;
+	}
+
+	public void setTeams(List<Team> teams) {
+		Teams = teams;
 	}
 
 	public NormalProject getNormalProject() {

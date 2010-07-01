@@ -11,15 +11,16 @@
 <body>
 	#parse("/WEB-INF/common/head.vm")
 	<div class="struct_body">
-		<div class="register_info">	
-			<form action="/lims/searchPersonByName.action" method="post">
+		<div class="register_info">
+			#if(!$normalProject)	
+			<form action="/lims/searchProjectById.action" method="post">
 			<table cellpadding="0" cellspacing="0">
 				<col width="20%"/>
 				<col width="40%"/>
 				<col width="40%"/>
 				<tbody>
 					<tr><th>选择项目</th><td>
-					<select class="select_190">
+					<select name="projectId" class="select_190">
 					<option>请选择</option>
 					#foreach($normalProject in $normalProjects)
 						<option value="$normalProject.id">$normalProject.name</option>
@@ -29,6 +30,19 @@
 				</tbody>
 			</table>
 			</form>
+			#else
+			<table cellpadding="0" cellspacing="0">
+				<col width="30%"/>
+				<col width="70%"/>
+				<tbody>
+					<tr><th>项目名称</th><td>$normalProject.name</td><tr>
+					<tr><th>委托单位</th><td>$normalProject.com</td><tr>
+					<tr><th>科研小组</th><td><a href="/lims/searchTeamById.action?teamId=$team.id">$team.name</a></td><tr>
+					<tr><th>投入资金</th><td>￥$normalProject.budget万元</td><tr>
+					<tr><th>详细信息</th><td>$normalProject.information</td><tr>
+				</tbody>
+			</table>
+			#end
 		</div>
 		#parse("/WEB-INF/pages/search/common/searchNav.vm")
 	</div>

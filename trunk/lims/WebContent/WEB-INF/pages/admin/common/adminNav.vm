@@ -2,5 +2,8 @@
 			<ul>
 				<li><a href="/lims/admin/adminRegisterInfo.action">未批准的注册信息</a></li>
 				<li><a href="/lims/admin/adminSearchView.action">系统用户搜索</a></li>
+				<li><a href="/lims/admin/adminProduction.action">添加新专利</a></li>
+				<li><a href="/lims/admin/adminProduction2.action">添加新成果</a></li>
+				<li><a href="/lims/admin/adminProduction3.action">添加最新奖励</a></li>
 			</ul>
 		</div>

@@ -70,5 +70,20 @@
 		class="cn.edu.buaa.leochrist.dao.hibernate.WorkStatusDaoHibernate">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
+	
+	<bean id="productionDao"
+		class="cn.edu.buaa.leochrist.dao.hibernate.ProductionDaoHibernate">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="resultDao"
+		class="cn.edu.buaa.leochrist.dao.hibernate.ResultDaoHibernate">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="awardDao"
+		class="cn.edu.buaa.leochrist.dao.hibernate.AwardDaoHibernate">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
 
 </beans>

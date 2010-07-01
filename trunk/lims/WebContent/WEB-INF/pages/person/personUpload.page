@@ -20,7 +20,12 @@
 					<tr><th>论文名称</th><td><input name="dissertation.title" class="input_100" type="text"/></td></tr>
 					<tr><th>论文作者</th><td><input name="dissertation.author" class="input_100" type="text"/></td></tr>
 					<tr><th>发表时间</th><td><input name="year" class="input_50" type="text"/><label class="lable_25">年</label><input name="month" class="input_50" type="text"/><label class="lable_25">月</label><input name="day" class="input_50" type="text"/><label class="lable_25">日</label></td></tr>
+					<tr><th>刊名</th><td><input name="dissertation.magazine" class="input_100" type="text"/></td></tr>
+					<tr><th>年，卷（期）</th><td><input name="dissertation.yearsVolume" class="input_100" type="text"/></td></tr>
+					<tr><th>分类号</th><td><input name="dissertation.clc" class="input_100" type="text"/></td></tr>
+					<tr><th>关键词</th><td><input name="dissertation.keyword" class="input_190" type="text"/></td></tr>
 					<tr><th>文件</th><td><input name="file" style="height:26px;" type="file"/></td></tr>
+					<tr><th>简介</th><td><textarea name="dissertation.information"></textarea></td></tr>
 					<tr class="center"><td colspan="2"><button class="button_100" type="submit">上传</button></td></tr>
 				</tbody>
 			</table>

@@ -22,6 +22,8 @@ public class NormalProject extends Project implements Serializable {
 	private Team team;
 
 	private String information;
+	
+	private String com;
 
 	private Double budget;
 
@@ -48,6 +50,15 @@ public class NormalProject extends Project implements Serializable {
 
 	public void setInformation(String information) {
 		this.information = information;
+	}
+
+	@Column(name = "com")
+	public String getCom() {
+		return com;
+	}
+
+	public void setCom(String com) {
+		this.com = com;
 	}
 
 	@Column(name = "budget", nullable = false)

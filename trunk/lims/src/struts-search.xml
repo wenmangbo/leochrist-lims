@@ -19,6 +19,11 @@
 			<result type="velocity" name="success">/WEB-INF/pages/search/searchPersonByName.page</result>
 		</action>
 		
+		<action name="searchPersonById" class="cn.edu.buaa.leochrist.actions.SearchAction"
+			method="searchPersonById">
+			<result type="velocity" name="success">/WEB-INF/pages/search/searchPersonByName.page</result>
+		</action>
+		
 		<action name="searchPersonAll" class="cn.edu.buaa.leochrist.actions.SearchAction"
 			method="searchPersonAll">
 			<result type="velocity" name="success">/WEB-INF/pages/search/searchPersonByName.page</result>
@@ -49,5 +54,64 @@
 			<result type="velocity" name="success">/WEB-INF/pages/search/searchProject.page</result>
 		</action>
 		
+		<action name="searchProjectById" class="cn.edu.buaa.leochrist.actions.SearchAction"
+			method="searchProjectById">
+			<result type="velocity" name="success">/WEB-INF/pages/search/searchProject.page</result>
+		</action>
+		
+		<action name="searchTeamById" class="cn.edu.buaa.leochrist.actions.SearchAction"
+			method="searchTeamById">
+			<result type="velocity" name="success">/WEB-INF/pages/search/searchTeam.page</result>
+		</action>
+		
+		<action name="orderByType" class="cn.edu.buaa.leochrist.actions.SearchAction"
+			method="orderByType">
+			<result type="velocity" name="success">news.page</result>
+		</action>
+		
+		<action name="searchProduction" class="cn.edu.buaa.leochrist.actions.SearchAction"
+			method="searchProduction">
+			<result type="velocity" name="success">/WEB-INF/pages/search/searchProduction.page</result>
+		</action>
+		
+		<action name="searchProduction2" class="cn.edu.buaa.leochrist.actions.SearchAction"
+			method="searchProduction">
+			<result type="velocity" name="success">/WEB-INF/pages/search/searchProduction2.page</result>
+		</action>
+		
+		<action name="searchProduction3" class="cn.edu.buaa.leochrist.actions.SearchAction"
+			method="searchProduction">
+			<result type="velocity" name="success">/WEB-INF/pages/search/searchProduction3.page</result>
+		</action>
+		
+		<action name="personViewD" class="cn.edu.buaa.leochrist.actions.SearchAction"
+			method="personViewD">
+			<result type="velocity" name="success">/WEB-INF/pages/person/personViewD.page</result>
+		</action>
+		
+		<action name="searchProductionAll" class="cn.edu.buaa.leochrist.actions.SearchAction"
+			method="searchProductionAll">
+			<result type="velocity" name="success">/WEB-INF/pages/search/searchProductionBy.page</result>
+		</action>
+		
+		<action name="searchProductionBy" class="cn.edu.buaa.leochrist.actions.SearchAction"
+			method="searchProductionBy">
+			<result type="velocity" name="success">/WEB-INF/pages/search/searchProductionBy.page</result>
+		</action>
+		
+		<action name="searchResultBy" class="cn.edu.buaa.leochrist.actions.SearchAction"
+			method="searchResultBy">
+			<result type="velocity" name="success">/WEB-INF/pages/search/resultShow.page</result>
+		</action>
+		
+		<action name="searchResultAll" class="cn.edu.buaa.leochrist.actions.SearchAction"
+			method="searchResultAll">
+			<result type="velocity" name="success">/WEB-INF/pages/search/resultShow.page</result>
+		</action>
+		
+		<action name="searchProductionById" class="cn.edu.buaa.leochrist.actions.SearchAction"
+			method="searchProductionById">
+			<result type="velocity" name="success">/WEB-INF/pages/search/productionShow.page</result>
+		</action>
 	</package>
 </struts>

@@ -117,10 +117,14 @@ public class PersonAction extends ActionSupport {
 		}
 
 		this.person.setName(p.getName());
+		
+		this.person.setNativePlace(p.getNativePlace());
 
 		this.person.setdCard(p.getdCard());
 
 		this.person.setIntroduction(p.getIntroduction());
+		
+		this.person.setMail(p.getMail());
 
 		Date date = new Date();
 
@@ -199,6 +203,11 @@ public class PersonAction extends ActionSupport {
 			Dissertation d = new Dissertation();
 			d.setAuthor(this.dissertation.getAuthor());
 			d.setFile(newFileName);
+			d.setClc(this.dissertation.getClc());
+			d.setKeyword(this.dissertation.getKeyword());
+			d.setMagazine(this.dissertation.getMagazine());
+			d.setYearsVolume(this.dissertation.getYearsVolume());
+			d.setInformation(this.dissertation.getInformation());
 			Date date = new Date();
 			d.setTitle(this.dissertation.getTitle());
 			d.setUploadDate(date);
@@ -233,7 +242,7 @@ public class PersonAction extends ActionSupport {
 		item.setKeyword(person.getId().toString());
 		item.setQueryType(QueryType.EQ);
 		queryItems.add(item);
-
+		
 		this.dissertations = this.dissertationManager.search(queryItems);
 
 		return SUCCESS;

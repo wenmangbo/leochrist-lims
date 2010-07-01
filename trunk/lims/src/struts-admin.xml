@@ -52,5 +52,36 @@
 				<param name="namespace">/admin</param>
 			</result>
 		</action>
+		
+		<action name="adminProduction" class="cn.edu.buaa.leochrist.actions.AdminAction"
+			method="adminProduction">
+			<result type="velocity" name="success">/WEB-INF/pages/admin/adminProduction.page</result>
+		</action>
+		
+		<action name="adminProduction2" class="cn.edu.buaa.leochrist.actions.AdminAction"
+			method="adminProduction">
+			<result type="velocity" name="success">/WEB-INF/pages/admin/adminProduction2.page</result>
+		</action>
+		
+		<action name="adminProduction3" class="cn.edu.buaa.leochrist.actions.AdminAction"
+			method="adminProduction">
+			<result type="velocity" name="success">/WEB-INF/pages/admin/adminProduction3.page</result>
+		</action>
+		
+		<action name="adminProductionSave" class="cn.edu.buaa.leochrist.actions.AdminAction"
+			method="adminProductionSave">
+			<result name="success" type="redirect-action">
+				<param name="actionName">adminView</param>
+				<param name="namespace">/admin</param>
+			</result>
+		</action>
+		
+		<action name="adminResultSave" class="cn.edu.buaa.leochrist.actions.AdminAction"
+			method="adminResultSave">
+			<result name="success" type="redirect-action">
+				<param name="actionName">adminView</param>
+				<param name="namespace">/admin</param>
+			</result>
+		</action>
 	</package>
 </struts>

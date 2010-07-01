@@ -18,5 +18,8 @@
 		<mapping class="cn.edu.buaa.leochrist.model.Team" />
 		<mapping class="cn.edu.buaa.leochrist.model.WorkSheet" />
 		<mapping class="cn.edu.buaa.leochrist.model.WorkStatus" />
+		<mapping class="cn.edu.buaa.leochrist.model.Production" />
+		<mapping class="cn.edu.buaa.leochrist.model.Result" />
+		<mapping class="cn.edu.buaa.leochrist.model.Award" />
 	</session-factory>
 </hibernate-configuration>

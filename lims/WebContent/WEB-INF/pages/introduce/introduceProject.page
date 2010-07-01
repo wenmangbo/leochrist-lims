@@ -13,8 +13,9 @@
 		<div class="register_info">
 			<table cellpadding="0" cellspacing="0">
 				<tbody>
+				<tr><th>项目名称</th><th>委托单位</th><th>项目投资</th></tr>
 				#foreach($n in $normalProjects)
-					<tr><td>$n.name</td></tr>
+					<tr><td><a href="/lims/searchProjectById.action?projectId=$n.id">$n.name</a></td><td>$n.com</td><td>￥$n.budget万元</td></tr>
 				#end
 			</table>
 		</div>

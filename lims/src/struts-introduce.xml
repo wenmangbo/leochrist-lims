@@ -14,5 +14,10 @@
 			<result type="velocity" name="success">/WEB-INF/pages/introduce/introduceProject.page</result>
 		</action>
 		
+		<action name="introduceTeam" class="cn.edu.buaa.leochrist.actions.IntroduceAction"
+			method="introduceTeam">
+			<result type="velocity" name="success">/WEB-INF/pages/introduce/introduceTeam.page</result>
+		</action>
+		
 	</package>
 </struts>

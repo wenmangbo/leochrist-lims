@@ -1,7 +1,12 @@
 		<div class="admin_nav">	
 			<ul>
 				<li><a href="/lims/searchPerson.action">实验室人员查询</a></li>
+				#if($role)
 				<li><a href="/lims/searchProject.action">实验室科研项目查询</a></li>
-				<li><a href="/lims/searchDissertation.action">实验论文搜索</a></li>
+				#end
+				<li><a href="/lims/searchDissertation.action">实验室论文搜索</a></li>
+				<li><a href="/lims/searchProduction.action">实验室专利查询</a></li>
+				<li><a href="/lims/searchProduction3.action">实验室成果查询</a></li>
+				<li><a href="/lims/searchProduction2.action">实验室奖励查询</a></li>
 			</ul>
 		</div>

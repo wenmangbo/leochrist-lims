@@ -21,6 +21,7 @@
 				<col width="75%"/>
 				<tbody>
 					<tr><th>项目名称</th><td><input name="normalProject.name" class="input_190" type="text"/></td></tr>
+					<tr><th>项目委托单位</th><td><input name="normalProject.com" class="input_190" type="text"/></td></tr>
 					<tr><th>项目级别</th><td>普通<input name="normalProject.isClassified" value="false" type="radio"/>机密<input name="normalProject.isClassified" value="true" type="radio"/></td></tr>
 					<tr><th>项目预算</th><td>￥<input name="normalProject.budget" class="input_50" type="text"/>万元</td></tr>
 					<tr><th>项目小组</th><td>

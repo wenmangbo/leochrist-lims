@@ -19,6 +19,7 @@ import cn.edu.buaa.leochrist.model.Lab;
 import cn.edu.buaa.leochrist.model.Member;
 import cn.edu.buaa.leochrist.model.NormalProject;
 import cn.edu.buaa.leochrist.model.Person;
+import cn.edu.buaa.leochrist.model.Production;
 import cn.edu.buaa.leochrist.model.Project;
 import cn.edu.buaa.leochrist.model.Register;
 import cn.edu.buaa.leochrist.model.Role;
@@ -34,6 +35,7 @@ import cn.edu.buaa.leochrist.service.LabManager;
 import cn.edu.buaa.leochrist.service.MemberManager;
 import cn.edu.buaa.leochrist.service.NormalProjectManager;
 import cn.edu.buaa.leochrist.service.PersonManager;
+import cn.edu.buaa.leochrist.service.ProductionManager;
 import cn.edu.buaa.leochrist.service.ProjectManager;
 import cn.edu.buaa.leochrist.service.RegisterManager;
 import cn.edu.buaa.leochrist.service.RoleManager;
@@ -98,6 +100,8 @@ public class UserAction extends ActionSupport {
 
 	private WorkSheet workSheet;
 
+	private ProductionManager productionManager;
+
 	private WorkStatusManager workStatusManager;
 
 	private RegisterManager registerManager;
@@ -137,10 +141,12 @@ public class UserAction extends ActionSupport {
 	private List<Member> members;
 
 	private List<WorkSheet> workSheets;
-	
+
 	private List<WorkStatus> workStatuss;
 
 	private List<Lab> labs;
+
+	private List<Production> productions;
 
 	public String index() {
 		this.register = (Register) this.getRequest().getSession().getAttribute(
@@ -150,16 +156,17 @@ public class UserAction extends ActionSupport {
 			this.person = this.register.getPerson();
 			this.role = this.person.getRole();
 		}
-		
+
 		this.workSheets = this.workSheetManager.getAll();
-		
+
 		Date alert = new Date();
-		for(WorkSheet w : workSheets){
-			if (w.getDeadline().getTime() - alert.getTime() < 68400000 * 3 && w.getDeadline().getTime() - alert.getTime() > 0) {
+		for (WorkSheet w : workSheets) {
+			if (w.getDeadline().getTime() - alert.getTime() < 68400000 * 3
+					&& w.getDeadline().getTime() - alert.getTime() > 0) {
 				w.setId(0);
-			} 
+			}
 		}
-		
+
 		return SUCCESS;
 	}
 
@@ -171,6 +178,8 @@ public class UserAction extends ActionSupport {
 			this.person = this.register.getPerson();
 			this.role = this.person.getRole();
 		}
+		
+		this.productions = this.productionManager.getAll();
 
 		return SUCCESS;
 	}
@@ -326,6 +335,7 @@ public class UserAction extends ActionSupport {
 		if (this.normalProject.getIsClassified()) {
 			this.classifiedProject = new ClassifiedProject();
 			this.classifiedProject.setName(this.normalProject.getName());
+			this.classifiedProject.setCom(this.normalProject.getCom());
 			this.classifiedProject.setIsClassified(true);
 			this.classifiedProject.setBudget(this.normalProject.getBudget());
 			this.classifiedProject.setInformation(this.normalProject
@@ -468,8 +478,17 @@ public class UserAction extends ActionSupport {
 
 		this.workSheet = this.workSheetManager.get(workSheetId);
 
-		this.workStatuss = this.workSheet.getWorkStatuss();
-
+		List<QueryItem> queryItems = new ArrayList<QueryItem>();
+		QueryItem item;
+		item = new QueryItem();
+		item.setFieldName("workSheet");
+		item.setKeyword(workSheetId.toString());
+		item.setQueryType(QueryType.EQ);
+		queryItems.add(item);
+		this.workStatuss = this.workStatusManager.search(queryItems);
+		if(workStatuss.size() > 0){
+			this.workStatus = workStatuss.get(0);
+		}
 		return SUCCESS;
 	}
 
@@ -515,7 +534,8 @@ public class UserAction extends ActionSupport {
 		this.member = this.memberManager.search(queryItems).get(0);
 
 		this.team = this.member.getTeam();
-
+		System.out.println("projectid:" + team.getProject().getId());
+		
 		queryItems.clear();
 		item = new QueryItem();
 		item.setFieldName("project.id");
@@ -670,6 +690,8 @@ public class UserAction extends ActionSupport {
 		this.workSheet.setLastModifiedDate(date);
 
 		this.workSheetManager.save(workSheet);
+		
+		this.message = "工作指派成功！";
 
 		return SUCCESS;
 	}
@@ -731,6 +753,22 @@ public class UserAction extends ActionSupport {
 		}
 
 		return SUCCESS;
+	}
+
+	public ProductionManager getProductionManager() {
+		return productionManager;
+	}
+
+	public void setProductionManager(ProductionManager productionManager) {
+		this.productionManager = productionManager;
+	}
+
+	public List<Production> getProductions() {
+		return productions;
+	}
+
+	public void setProductions(List<Production> productions) {
+		this.productions = productions;
 	}
 
 	public WorkStatus getWorkStatus() {

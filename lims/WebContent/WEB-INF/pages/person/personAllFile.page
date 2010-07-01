@@ -16,7 +16,7 @@
 				<tbody>
 					<tr><th>序号</th><th>论文名称</th><th>作者</th><th>发表时间</th><th>操作</th></tr>
 					#foreach($dissertation in $dissertations)
-					<tr><td>$velocityCount</td><td><a title="下载，请单击鼠标右键“另存为”" href="/lims/file/$dissertation.file">$dissertation.title</a></td><td>$dissertation.author</td><td>$dissertation.pubDate</td><td><form action="/lims/personDel.action" method="post"><input type="hidden" name="delId" value="$dissertation.id"/><button type="submit">删除</button</form></td></tr>
+					<tr><td>$velocityCount</td><td><a href="/lims/personViewD.action?dId=$dissertation.id">$dissertation.title</a></td><td>$dissertation.author</td><td>$dissertation.pubDate</td><td><form action="/lims/personDel.action" method="post"><input type="hidden" name="delId" value="$dissertation.id"/><button type="submit">删除</button</form></td></tr>
 					#end
 				</tbody>
 			</table>

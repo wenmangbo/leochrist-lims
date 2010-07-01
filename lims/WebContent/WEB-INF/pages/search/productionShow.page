@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+#set($tmplpath="")
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<link href="${tmplpath}css/index/global.css" type="text/css" rel="stylesheet" />
+<link href="${tmplpath}css/index/index.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript" src="${tmplpath}javascript/jquery-1.4.2.min.js"></script>
+<title>LeoChrist-LIMS</title>
+</head>
+<body>
+	#parse("/WEB-INF/common/head.vm")
+	<div class="struct_body">
+		<div class="register_info">	
+			<table cellpadding="0" cellspacing="0">
+				<col width="30%">
+				<col width="70%">
+				<tbody>
+					<tr><th>专利号</th><td>$production.number</td></tr>
+					<tr><th>专利名称</th><td>$production.name</td></tr>
+					<tr><th>专利拥有者</th><td>$production.owner</td></tr>
+					<tr><th>专利注册日期</th><td>$production.date</td></tr>
+					<tr><th>专利有效期</th><td>$production.validity年</td></tr>
+					<tr><th>国家</th><td>$production.cou</td></tr>
+					<tr><th>专利简介</th><td>$production.information</td></tr>
+				</tbody>
+			</table>
+		</div>
+		#parse("/WEB-INF/pages/search/common/searchNav.vm")
+	</div>
+</body>
+</html>

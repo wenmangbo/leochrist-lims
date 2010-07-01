@@ -34,6 +34,16 @@ public class Dissertation implements Serializable {
 
 	private Date uploadDate;
 
+	private String magazine;
+
+	private String yearsVolume;
+
+	private String clc;
+
+	private String keyword;
+	
+	private String information;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id", unique = true, nullable = false)
@@ -101,5 +111,52 @@ public class Dissertation implements Serializable {
 	public void setUploadDate(Date uploadDate) {
 		this.uploadDate = uploadDate;
 	}
+
+	@Column(name = "magazine")
+	public String getMagazine() {
+		return magazine;
+	}
+
+	public void setMagazine(String magazine) {
+		this.magazine = magazine;
+	}
+
+	@Column(name = "years_volume")
+	public String getYearsVolume() {
+		return yearsVolume;
+	}
+
+	public void setYearsVolume(String yearsVolume) {
+		this.yearsVolume = yearsVolume;
+	}
+
+	@Column(name = "clc")
+	public String getClc() {
+		return clc;
+	}
+
+	public void setClc(String clc) {
+		this.clc = clc;
+	}
+
+	@Column(name = "keyword")
+	public String getKeyword() {
+		return keyword;
+	}
+
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
+
+	@Column(name = "information")
+	public String getInformation() {
+		return information;
+	}
+
+	public void setInformation(String information) {
+		this.information = information;
+	}
+	
+	
 
 }

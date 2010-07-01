@@ -71,5 +71,20 @@
 		class="cn.edu.buaa.leochrist.service.impl.WorkStatusManagerImpl">
 		<constructor-arg ref="workStatusDao" />
 	</bean>
+	
+	<bean id="productionManager"
+		class="cn.edu.buaa.leochrist.service.impl.ProductionManagerImpl">
+		<constructor-arg ref="productionDao" />
+	</bean>
+	
+	<bean id="resultManager"
+		class="cn.edu.buaa.leochrist.service.impl.ResultManagerImpl">
+		<constructor-arg ref="resultDao" />
+	</bean>
+	
+	<bean id="awardManager"
+		class="cn.edu.buaa.leochrist.service.impl.AwardManagerImpl">
+		<constructor-arg ref="awardDao" />
+	</bean>
 
 </beans>

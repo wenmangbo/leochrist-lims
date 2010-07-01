@@ -1,6 +1,6 @@
 		<div class="admin_nav">	
 			<ul>
 				<li><a href="/lims/introduceProject.action">科研项目</a></li>
-				<li><a href="#">科研队伍概况</a></li>
+				<li><a href="/lims/introduceTeam.action">科研队伍</a></li>
 			</ul>
 		</div>

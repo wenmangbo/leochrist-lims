@@ -13,14 +13,14 @@
 	<div class="struct_body">
 		<div class="create_lab">
 			#if($message)
-			<h2>$message</h2>
+			<h1 style="color:white;font-size:24px;">$message</h1>
 			#else
 			<form action="/lims/userWorkSheetSave.action" method="get">
 			<table cellpadding="0" cellspacing="0">
 				<col width="25%"/>
 				<col width="75%"/>
 				<tbody>
-					<tr><th>项目名称#if($classifiedProject)<input type="hidden" name="projectId" value="$classifiedProject.id"/>#else<input type="hidden" name="projectId" value="$normalProject.id"/>#end</th><td>$classifiedProject.name</td></tr>
+					<tr><th>项目名称#if($classifiedProject)<input type="hidden" name="projectId" value="$classifiedProject.id"/>#else<input type="hidden" name="projectId" value="$normalProject.id"/>#end</th><td>#if($classifiedProject)$classifiedProject.name#else$normalProject.name#end</td></tr>
 					<tr><th>标题</th><td><input name="workSheet.title" type="text"/></td></tr>
 					<tr><th>工作指派给<input type="hidden" name="creatorId" value="$team.teamLeader.id"/></th><td>
 					<select class="select_150" name="memberId">
